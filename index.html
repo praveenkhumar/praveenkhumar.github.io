@@ -3,9 +3,228 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Praveen Kumar's Portfolio</title>
+    <title>Praveen Kumar | Portfolio</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+        color: #333;
+        line-height: 1.6;
+      }
+      header {
+        background-color: #222;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+      }
+      main {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+      }
+      section {
+        margin-bottom: 40px;
+      }
+      h1,
+      h2,
+      h3 {
+        color: #222;
+      }
+      a {
+        color: #0066cc;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      ul {
+        padding-left: 20px;
+      }
+      .cert-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px 30px;
+      }
+      .cert-grid a {
+        display: block;
+      }
+      @media (max-width: 768px) {
+        .cert-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
   </head>
   <body>
-    <h1>Welcome to Praveen Kumar's Portfolio</h1>
+    <header>
+      <h1>Praveen Kumar</h1>
+      <p>Backend Engineer | Python Enthusiast | Generative AI Learner</p>
+    </header>
+
+    <main>
+      <section>
+        <h2>✨ About Me</h2>
+        <p>
+          Senior Project Lead with 14+ years of experience building scalable
+          back-end solutions in PHP and Node.js, now transitioning into Python
+          development. Experienced in Django, Flask, FastAPI, REST APIs, DevOps,
+          and cloud deployment.
+        </p>
+      </section>
+
+      <section>
+        <h2>🛠️ Tech Stack</h2>
+        <ul>
+          <li>
+            <strong>Languages:</strong> PHP, Node.js, Python, JavaScript,
+            TypeScript
+          </li>
+          <li>
+            <strong>Frameworks:</strong> Laravel, Django, Flask, FastAPI,
+            Express.js
+          </li>
+          <li><strong>Databases:</strong> MySQL, MongoDB, Redis, DB2</li>
+          <li>
+            <strong>DevOps:</strong> GitHub Actions, DigitalOcean, AWS, Heroku
+          </li>
+          <li>
+            <strong>Others:</strong> OpenAI APIs, Agile, GIT, Postman, Jupyter
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>🚀 Featured Projects</h2>
+        <ul>
+          <li>
+            <strong
+              ><a
+                href="https://github.com/praveenkhumar/task_management_system"
+                target="_blank"
+                >Task Management System – Django</a
+              ></strong
+            ><br />User auth, CRUD tasks, filters, REST API
+          </li>
+          <li>
+            <strong
+              ><a
+                href="https://github.com/praveenkhumar/url-shortener"
+                target="_blank"
+                >URL Shortener – Flask</a
+              ></strong
+            ><br />Short link generation, redirect, API
+          </li>
+          <li>
+            <strong
+              ><a
+                href="https://github.com/praveenkhumar/fastapi-weather-project"
+                target="_blank"
+                >Weather API – FastAPI</a
+              ></strong
+            ><br />REST API with Pydantic validation and Swagger UI
+          </li>
+          <li>
+            <strong
+              ><a href="https://www.hostabay.com" target="_blank"
+                >Hostabay – PHP</a
+              ></strong
+            ><br />Search tool to analyze website hosting, revenue, traffic
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>📄 Certifications</h2>
+        <div class="cert-grid">
+          <a
+            href="https://www.udemy.com/certificate/UC-488a9cd3-8d14-46d2-802c-818ff134e5f2/"
+            target="_blank"
+            >ML, DS & Gen AI with Python</a
+          >
+          <a
+            href="https://www.tutorialspoint.com/market/certificate.jsp/TP-DC4NQ941?v=1742449060"
+            target="_blank"
+            >Python Web Dev Pro</a
+          >
+          <a
+            href="https://www.tutorialspoint.com/market/certificate.jsp/TP-69U2JECU?v=1742455390"
+            target="_blank"
+            >FastAPI + MySQL</a
+          >
+          <a
+            href="https://www.udemy.com/certificate/UC-1993460d-f971-4964-b2ec-6dc29fb17baf/"
+            target="_blank"
+            >Complete Python Bootcamp</a
+          >
+          <a
+            href="https://www.udemy.com/certificate/UC-304f2d18-24d3-451a-8eff-d4612a2ce1f2/"
+            target="_blank"
+            >GitHub Actions</a
+          >
+          <a
+            href="https://www.udemy.com/certificate/UC-e05a7b0e-2d07-43b3-ac43-a962dd10a33e/"
+            target="_blank"
+            >Laravel – Advanced</a
+          >
+          <a
+            href="https://www.mygreatlearning.com/certificate/KPXBWHFN"
+            target="_blank"
+            >AI & ML Projects</a
+          >
+          <a
+            href="https://www.mygreatlearning.com/certificate/RGBXJNJI"
+            target="_blank"
+            >Prompt Engineering</a
+          >
+          <a
+            href="https://www.tutorialspoint.com/market/certificate.jsp/TP-GL7RCHIN?v=1728289331"
+            target="_blank"
+            >OpenAI Chatbot</a
+          >
+          <a
+            href="https://www.udemy.com/certificate/UC-91721051-c457-41ee-89d3-15bd2883b534/"
+            target="_blank"
+            >Agile PM Masterclass</a
+          >
+        </div>
+        <p><a href="./certificates.md" target="_blank">See full list</a></p>
+      </section>
+
+      <section>
+        <h2>📢 Contact Me</h2>
+        <ul>
+          <li>
+            <strong>Email:</strong>
+            <a href="mailto:praveenkhumar.p@gmail.com"
+              >praveenkhumar.p@gmail.com</a
+            >
+          </li>
+          <li>
+            <strong>LinkedIn:</strong>
+            <a
+              href="https://linkedin.com/in/praveen-kumar-prabakaran"
+              target="_blank"
+              >linkedin.com/in/praveen-kumar-prabakaran</a
+            >
+          </li>
+          <li>
+            <strong>GitHub:</strong>
+            <a href="https://github.com/praveenkhumar" target="_blank"
+              >github.com/praveenkhumar</a
+            >
+          </li>
+          <li>
+            <strong>Medium:</strong>
+            <a href="https://medium.com/@praveenkhumar" target="_blank"
+              >medium.com/@praveenkhumar</a
+            >
+          </li>
+          <li><strong>Location:</strong> Chennai, India</li>
+        </ul>
+      </section>
+    </main>
   </body>
 </html>
