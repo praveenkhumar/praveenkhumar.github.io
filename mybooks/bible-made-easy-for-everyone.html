@@ -1,147 +1,356 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>📘 BIBLE – Made Easy for Everyone</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f8f8f8;
-      color: #333;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      max-width: 960px;
-      margin: auto;
-      padding: 20px;
-    }
-    h1, h2 {
-      text-align: center;
-    }
-    .book-cover {
-      display: flex;
-      justify-content: center;
-      margin: 20px 0;
-    }
-    .book-cover img {
-      max-width: 300px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    .buy-links {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      margin: 30px 0;
-    }
-    .buy-card {
-      background: white;
-      border-radius: 10px;
-      padding: 15px;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .buy-card img {
-      width: 100px;
-      height: auto;
-      margin-bottom: 10px;
-    }
-    .buy-card a {
-      display: inline-block;
-      padding: 10px 15px;
-      background-color: #007bff;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      margin-top: 10px;
-    }
-    .author-section {
-      margin-top: 50px;
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
-    .footer {
-      text-align: center;
-      font-size: 14px;
-      margin: 40px 0 10px;
-      color: #777;
-    }
-  </style>
-  <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-08RGRW0GMS"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>📘 BIBLE – Made Easy for Everyone</title>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f8f8;
+        color: #333;
+        margin: 0;
+        padding: 0;
       }
-      gtag("js", new Date());
+      .container {
+        max-width: 960px;
+        margin: auto;
+        padding: 20px;
+      }
+      h1,
+      h2,
+      h3 {
+        text-align: center;
+        margin-top: 40px;
+        margin-bottom: 20px;
+      }
+      h2.section-title {
+        font-size: 26px;
+        font-weight: bold;
+        margin-top: 0;
+        margin-bottom: 30px;
+      }
+      h3 {
+        font-size: 22px;
+        font-weight: bold;
+      }
+      .headline {
+        font-size: 28px;
+        font-weight: bold;
+        text-align: center;
+        margin: 40px 0 30px;
+        color: #007bff;
+      }
+      .book-images {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        margin: 20px 0;
+      }
+      .book-images img {
+        flex: 1 1 300px;
+        max-width: 100%;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      .intro-section {
+        background-color: #fff;
+        padding: 30px 20px;
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        margin: 40px 0;
+        line-height: 1.6;
+      }
+      .intro-section p {
+        margin-bottom: 16px;
+        font-size: 17px;
+      }
+      .intro-section strong {
+        display: block;
+        margin-top: 20px;
+        font-size: 18px;
+      }
+      .section-box {
+        background-color: #ffffff;
+        padding: 30px 20px;
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        margin-bottom: 50px;
+      }
+      .buy-links {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin: 30px 0;
+      }
+      .buy-card {
+        background: white;
+        border-radius: 10px;
+        padding: 15px;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      .buy-card img {
+        width: 100px;
+        height: auto;
+        margin-bottom: 10px;
+      }
+      .buy-card a {
+        display: inline-block;
+        padding: 10px 15px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        margin-top: 10px;
+      }
+      .author-section {
+        margin-top: 60px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+      .footer {
+        text-align: center;
+        font-size: 14px;
+        margin: 40px 0 10px;
+        color: #777;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>📘 BIBLE – Made Easy for Everyone</h1>
+      <p style="text-align: center; font-size: 18px">
+        A Simple and Practical Guide to Understanding God's Word
+      </p>
 
-      gtag("config", "G-08RGRW0GMS");
-    </script>
-</head>
-<body>
-
-  <div class="container">
-    <h1>📘 BIBLE – Made Easy for Everyone</h1>
-    <p style="text-align:center; font-size: 18px;">A Simple and Practical Guide to Understanding God's Word</p>
-
-    <div class="book-cover">
-      <!-- 📌 Replace this image with your book front page -->
-      <img src="bible_made_easy_for_everyone.jpg" alt="Book Cover">
-    </div>
-
-    <h2>📦 Available On</h2>
-
-    <div class="buy-links">
-      <div class="buy-card">
-        <img src="amazon_btn.svg" alt="Amazon INDIA">
-        <p><strong>Amazon INDIA</strong><br>Paperback – ₹2,990</p>
-        <a href="https://www.amazon.in/dp/B0FCSHYM7P/" target="_blank">Buy Now</a>
-        <p>Hardcover – ₹3,290</p>
-        <a href="https://www.amazon.in/dp/B0FCSMQ4X3/" target="_blank">Buy Now</a>
+      <div class="headline">
+        You Always Wanted to Understand the Bible — Now You Finally Can
       </div>
 
-      <div class="buy-card">
-        <img src="amazon_btn.svg" alt="Amazon GLOBAL">
-        <p><strong>Amazon GLOBAL</strong><br>Paperback – $24.99</p>
-        <a href="https://www.amazon.com/dp/B0F7971SZ5" target="_blank">Buy Now</a>
-        <p>Hardcover – $64.18</p>
-        <a href="https://www.amazon.com/dp/B0F79WYMPM" target="_blank">Buy Now</a>
+      <div class="book-images">
+        <img src="bible_made_easy_for_everyone.jpg" alt="Book Cover" />
+        <img src="book_interior_sample.jpg" alt="Book Interior Sample" />
       </div>
 
-      <div class="buy-card">
-        <img src="flipkart_btn.svg" alt="Flipkart">
-        <p><strong>Flipkart</strong><br>Paperback – ₹2,990</p>
-        <a href="https://www.flipkart.com/bible-made-easy-everyone/p/itma861e57b8c77b?pid=9798899612039" target="_blank">Buy Now</a>
-        <p>Hardcover – ₹3,290</p>
-        <a href="https://www.flipkart.com/bible-made-easy-everyone/p/itma861e57b8c77b?pid=9798899612053" target="_blank">Buy Now</a>
+      <div class="intro-section">
+        <p>
+          Ever tried reading the Bible and felt overwhelmed just a few pages in?
+          You’re not alone.
+        </p>
+        <p>
+          For many, the Bible is the book they most want to read — but also the
+          hardest to finish. The ancient names, stories, and unfamiliar language
+          often make people feel like they aren’t “spiritual enough” to
+          understand it. Slowly, they give up... and carry silent guilt.
+        </p>
+
+        <strong
+          >But what if you never truly read the Bible in this lifetime?</strong
+        >
+        <p>
+          What if the one book that could transform your life, your mindset, and
+          your eternity stayed unopened or half-understood?
+        </p>
+        <p>
+          Years pass. You remain stuck with fragmented knowledge, relying on
+          secondhand sermons, feeling spiritually unsure — wondering if God’s
+          Word was really meant for “normal people” like you.
+        </p>
+
+        <strong
+          >Here’s the good news — you don’t need to struggle anymore.</strong
+        >
+        <p>
+          <em>BIBLE — Made Easy for Everyone</em> was written to help you
+          understand the entire Bible like a story — clearly, confidently, and
+          quickly. It’s not a heavy theology book. It’s not filled with
+          confusing commentary. And it’s definitely not boring.
+        </p>
+
+        <p>
+          This book is for you — the everyday believer, the curious learner, the
+          one who wants to finally “get it.”
+        </p>
+
+        <strong>Imagine this...</strong>
+        <p>
+          Picking up the Bible and actually understanding it. Explaining each
+          book to friends, children, or your study group — with clarity and joy.
+          Feeling spiritually confident, connected, and clear about God’s story
+          for the first time in your life.
+        </p>
+
+        <p>
+          That’s the experience hundreds are already having — and now it’s your
+          turn.
+        </p>
+
+        <strong>What makes this book different?</strong>
+        <p>✅ Simple language — even a 12th-grade student can understand</p>
+        <p>
+          ✅ Clear structure — each book explained like a short, powerful story
+        </p>
+        <p>
+          ✅ Real-life applications — not just knowledge, but life-changing
+          insights
+        </p>
+        <p>
+          ✅ Beautifully designed — available in color and black & white
+          editions
+        </p>
+
+        <strong>Ready to finally understand the Bible?</strong>
+        <p>You don’t need a theology degree. You just need a guide.</p>
+        <p>
+          <strong
+            >Scroll below to explore all available formats and choose your copy
+            today!</strong
+          >
+        </p>
       </div>
 
-      <div class="buy-card">
-        <img src="notionpress_btn.png" alt="Notion Press">
-        <p><strong>Notion Press</strong><br>Paperback – ₹2,990</p>
-        <a href="https://direct.notionpress.com/in/read/bible-made-easy-for-everyone/paperback" target="_blank">Buy Now</a>
-        <p>Hardcover – ₹3,290</p>
-        <a href="https://direct.notionpress.com/in/read/bible-made-easy-for-everyone-hardcover/hardcover" target="_blank">Buy Now</a>
+      <div class="section-box">
+        <h2 class="section-title">📕 Paperback & Hardcover Formats</h2>
+        <div class="buy-links">
+          <div class="buy-card">
+            <img src="amazon_btn.svg" alt="Amazon INDIA" />
+            <p><strong>Amazon INDIA</strong><br />Paperback – ₹2,990</p>
+            <a href="https://www.amazon.in/dp/B0FCSHYM7P/" target="_blank"
+              >Buy Now</a
+            >
+            <p>Hardcover – ₹3,290</p>
+            <a href="https://www.amazon.in/dp/B0FCSMQ4X3/" target="_blank"
+              >Buy Now</a
+            >
+          </div>
+
+          <div class="buy-card">
+            <img src="amazon_btn.svg" alt="Amazon GLOBAL" />
+            <p><strong>Amazon GLOBAL</strong><br />Paperback – $24.99</p>
+            <a href="https://www.amazon.com/dp/B0F7971SZ5" target="_blank"
+              >Buy Now</a
+            >
+            <p>Hardcover – $64.18</p>
+            <a href="https://www.amazon.com/dp/B0F79WYMPM" target="_blank"
+              >Buy Now</a
+            >
+          </div>
+
+          <div class="buy-card">
+            <img src="flipkart_btn.svg" alt="Flipkart" />
+            <p><strong>Flipkart</strong><br />Paperback – ₹2,990</p>
+            <a
+              href="https://www.flipkart.com/bible-made-easy-everyone/p/itma861e57b8c77b?pid=9798899612039"
+              target="_blank"
+              >Buy Now</a
+            >
+            <p>Hardcover – ₹3,290</p>
+            <a
+              href="https://www.flipkart.com/bible-made-easy-everyone/p/itma861e57b8c77b?pid=9798899612053"
+              target="_blank"
+              >Buy Now</a
+            >
+          </div>
+
+          <div class="buy-card">
+            <img src="notionpress_btn.png" alt="Notion Press" />
+            <p><strong>NotionPress</strong><br />Paperback – ₹2,990</p>
+            <a
+              href="https://direct.notionpress.com/in/read/bible-made-easy-for-everyone/paperback"
+              target="_blank"
+              >Buy Now</a
+            >
+            <p>Hardcover – ₹3,290</p>
+            <a
+              href="https://direct.notionpress.com/in/read/bible-made-easy-for-everyone-hardcover/hardcover"
+              target="_blank"
+              >Buy Now</a
+            >
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="author-section">
-      <h2>👤 About the Author</h2>
-      <p><strong>Praveen Kumar Moses</strong> is a software engineer and Bible teacher passionate about making God’s Word easy to understand for everyone. With a heart for clarity and truth, he created this book to help readers of all ages grasp the Bible in a simple, practical, and meaningful way.</p>
-    </div>
+      <div class="section-box">
+        <h2 class="section-title">📱 Digital Formats</h2>
 
-    <div class="footer">
-      © 2025 Praveen Kumar Moses | All rights reserved
-    </div>
-  </div>
+        <h3>Android</h3>
+        <div class="buy-links">
+          <div class="buy-card">
+            <img src="amazon_btn.svg" alt="Amazon Kindle India" />
+            <p><strong>Amazon Kindle India</strong></p>
+            <a href="https://www.amazon.in/dp/B0F74NXFLP" target="_blank"
+              >Buy Now</a
+            >
+          </div>
+          <div class="buy-card">
+            <img src="amazon_btn.svg" alt="Amazon Kindle Global" />
+            <p><strong>Amazon Kindle Global</strong></p>
+            <a href="https://www.amazon.com/dp/B0F74NXFLP" target="_blank"
+              >Buy Now</a
+            >
+          </div>
+          <div class="buy-card">
+            <img src="google_play_books_btn.png" alt="Google Play Ebook" />
+            <p><strong>Google Play Ebook</strong></p>
+            <a
+              href="https://play.google.com/store/books/details?id=CodlEQAAQBAJ"
+              target="_blank"
+              >Buy Now</a
+            >
+          </div>
+          <div class="buy-card">
+            <img src="google_play_books_btn.png" alt="Google Play Audiobook" />
+            <p><strong>Google Play Audiobook</strong></p>
+            <a
+              href="https://play.google.com/store/audiobooks/details?id=AQAAAEDK3RydxM"
+              target="_blank"
+              >Buy Now</a
+            >
+          </div>
+        </div>
 
-</body>
+        <h3>iOS</h3>
+        <div class="buy-links">
+          <div class="buy-card">
+            <img src="amazon_btn.svg" alt="Amazon Kindle India" />
+            <p><strong>Amazon Kindle India</strong></p>
+            <a href="https://www.amazon.in/dp/B0F74NXFLP" target="_blank"
+              >Buy Now</a
+            >
+          </div>
+          <div class="buy-card">
+            <img src="amazon_btn.svg" alt="Amazon Kindle Global" />
+            <p><strong>Amazon Kindle Global</strong></p>
+            <a href="https://www.amazon.com/dp/B0F74NXFLP" target="_blank"
+              >Buy Now</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="author-section">
+        <h2>About the Author</h2>
+        <p>
+          <strong>Praveen Kumar Moses</strong> is a software engineer and Bible
+          teacher passionate about making God’s Word easy to understand for
+          everyone. With a heart for clarity and truth, he created this book to
+          help readers of all ages grasp the Bible in a simple, practical, and
+          meaningful way.
+        </p>
+      </div>
+
+      <div class="footer">© 2025 Praveen Kumar Moses | All rights reserved</div>
+    </div>
+  </body>
 </html>
