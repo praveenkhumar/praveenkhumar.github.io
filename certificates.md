@@ -74,6 +74,10 @@ A complete list of my certifications across Python Development, Machine Learning
   _TutorialsPoint – Oct 2024_  
   [View Certificate](https://www.tutorialspoint.com/market/certificate.jsp/TP-GL7RCHIN?v=1728289331)
 
+- **LLM Engineering: Master AI, Large Language Models & Agents**  
+  _Udemy – Sep 2025_  
+  [View Certificate](https://www.udemy.com/certificate/UC-fe31fa56-6955-4a2b-89a4-3ec9aaa01118/)
+
 ---
 
 ## 🛠️ DevOps & Cloud
