@@ -78,7 +78,7 @@ Helps users find details about websites (hosting, tech stack, traffic, revenue).
 
 ## 📫 Contact Me
 
-- 🔗 [LinkedIn](https://linkedin.com/in/praveen-kumar-prabakaran)
+- 🔗 [LinkedIn](https://linkedin.com/in/praveenkprabakaran)
 - 💼 [GitHub](https://github.com/praveenkhumar)
 - ✍️ [Medium](https://medium.com/@praveenkhumar)
 - 📧 Email: praveenkhumar.p@gmail.com
@@ -88,7 +88,7 @@ Helps users find details about websites (hosting, tech stack, traffic, revenue).
 
 ## 📄 Resume
 
-You can download my latest resume [here](./praveen_resume_june_2025.pdf)  
+You can download my latest resume [here](./praveen_kumar_resume_2025.pdf)  
 _(Or access via LinkedIn/GitHub profile)_
 
 ---
