@@ -161,13 +161,43 @@
                 id="sipModeBtn"
                 class="flex-1 py-2 px-4 rounded-lg font-medium transition-all duration-300 bg-white dark:bg-slate-600 text-indigo-600 dark:text-indigo-400 shadow-md"
               >
-                Monthly SIP
+                Systematic Investment Plan (SIP)
               </button>
               <button
                 id="lumpsumModeBtn"
                 class="flex-1 py-2 px-4 rounded-lg font-medium transition-all duration-300 text-gray-600 dark:text-gray-300 hover:bg-white/50 dark:hover:bg-slate-500/50"
               >
                 One-Time Lumpsum
+              </button>
+            </div>
+          </div>
+
+          <!-- NEW: SIP Frequency Selector -->
+          <div id="sipFrequencyCard" class="glass-card p-4 rounded-xl">
+            <h2 class="text-xl font-semibold mb-3">SIP Frequency</h2>
+            <div
+              class="flex space-x-2 p-1 bg-gray-200 dark:bg-slate-700 rounded-lg text-sm transition-colors duration-300"
+            >
+              <button
+                id="monthlyFreqBtn"
+                data-freq="Monthly"
+                class="flex-1 py-2 px-3 rounded-lg font-medium transition-all duration-300 bg-white dark:bg-slate-600 text-indigo-600 dark:text-indigo-400 shadow-md"
+              >
+                Monthly
+              </button>
+              <button
+                id="weeklyFreqBtn"
+                data-freq="Weekly"
+                class="flex-1 py-2 px-3 rounded-lg font-medium transition-all duration-300 text-gray-600 dark:text-gray-300 hover:bg-white/50 dark:hover:bg-slate-500/50"
+              >
+                Weekly
+              </button>
+              <button
+                id="dailyFreqBtn"
+                data-freq="Daily"
+                class="flex-1 py-2 px-3 rounded-lg font-medium transition-all duration-300 text-gray-600 dark:text-gray-300 hover:bg-white/50 dark:hover:bg-slate-500/50"
+              >
+                Daily
               </button>
             </div>
           </div>
@@ -362,7 +392,10 @@
     <script>
       // Global state and constants
       let investmentMode = "SIP"; // 'SIP' or 'Lumpsum'
-      const MONTHS_PER_YEAR = 12;
+      let sipFrequency = "Monthly"; // 'Daily', 'Weekly', or 'Monthly'
+      const DAYS_PER_YEAR = 365.25; // Use 365.25 for average
+      const WEEKS_PER_YEAR = 52.14; // Use 52.14 for average
+      const MONTHS_PER_YEAR = 12; // Remains 12
 
       // DOM elements
       const themeToggle = document.getElementById("themeToggle");
@@ -372,6 +405,10 @@
 
       const sipModeBtn = document.getElementById("sipModeBtn");
       const lumpsumModeBtn = document.getElementById("lumpsumModeBtn");
+
+      const sipFrequencyCard = document.getElementById("sipFrequencyCard");
+      const freqButtons = document.querySelectorAll("#sipFrequencyCard button");
+
       const amountLabel = document.getElementById("amountLabel");
       const amountInput = document.getElementById("investmentAmount");
       const amountSlider = document.getElementById("investmentAmountSlider");
@@ -412,34 +449,28 @@
         return `₹${formatted}`;
       }
 
-      /**
-       * Converts decimal rate to percentage string.
-       * @param {number} rate - The decimal rate (e.g., 0.12).
-       * @returns {string} The percentage string.
-       */
-      function formatPercentage(rate) {
-        return `${(rate * 100).toFixed(2)}%`;
-      }
-
       // --- Core Calculation Logic ---
 
       /**
-       * Calculates Future Value (FV) for SIP.
+       * Calculates Future Value (FV) for SIP based on frequency.
        * FV = P * [ ((1 + i)^n - 1) / i ] * (1 + i)
-       * Where i = r/12, n = total months
-       * @param {number} P - Monthly investment amount.
+       * Where i = r/periodsPerYear, n = total periods
+       * @param {number} P - Investment amount per period.
        * @param {number} r - Annual rate of return (as decimal, e.g., 0.12).
        * @param {number} t - Duration in years.
+       * @param {number} periodsPerYear - Number of investment periods per year.
        * @returns {number} The final maturity value.
        */
-      function calculateSIPV(P, r, t) {
-        const i = r / MONTHS_PER_YEAR; // Monthly rate
-        const n = t * MONTHS_PER_YEAR; // Total number of months
+      function calculateSIPV(P, r, t, periodsPerYear) {
+        const i = r / periodsPerYear; // Periodic rate
+        const n = t * periodsPerYear; // Total number of periods
 
         if (r === 0) return P * n; // Simple investment without returns
 
+        const totalPeriods = Math.round(n);
+
         // Standard FV of Annuity formula, compounded at the start of the period
-        return P * ((Math.pow(1 + i, n) - 1) / i) * (1 + i);
+        return P * ((Math.pow(1 + i, totalPeriods) - 1) / i) * (1 + i);
       }
 
       /**
@@ -631,6 +662,93 @@
       }
 
       /**
+       * Handles the change in SIP frequency (Daily/Weekly/Monthly)
+       */
+      function handleFrequencyChange(frequency) {
+        sipFrequency = frequency;
+
+        let label, min, max, step, defaultValue;
+
+        // UI Button styling for frequency
+        freqButtons.forEach((btn) => {
+          if (btn.dataset.freq === frequency) {
+            btn.classList.add(
+              "bg-white",
+              "dark:bg-slate-600",
+              "text-indigo-600",
+              "dark:text-indigo-400",
+              "shadow-md"
+            );
+            btn.classList.remove(
+              "text-gray-600",
+              "dark:text-gray-300",
+              "hover:bg-white/50",
+              "dark:hover:bg-slate-500/50"
+            );
+          } else {
+            btn.classList.remove(
+              "bg-white",
+              "dark:bg-slate-600",
+              "text-indigo-600",
+              "dark:text-indigo-400",
+              "shadow-md"
+            );
+            btn.classList.add(
+              "text-gray-600",
+              "dark:text-gray-300",
+              "hover:bg-white/50",
+              "dark:hover:bg-slate-500/50"
+            );
+          }
+        });
+
+        // Update amount parameters based on frequency for better range control
+        if (frequency === "Daily") {
+          label = "Daily Investment (₹)";
+          min = 100;
+          max = 5000;
+          step = 50;
+          defaultValue = 500;
+        } else if (frequency === "Weekly") {
+          label = "Weekly Investment (₹)";
+          min = 500;
+          max = 25000;
+          step = 100;
+          defaultValue = 2000;
+        } else {
+          // Monthly
+          label = "Monthly Investment (₹)";
+          min = 500;
+          max = 100000;
+          step = 500;
+          defaultValue = 5000;
+        }
+
+        amountLabel.textContent = label;
+        amountInput.min = min;
+        amountInput.max = max;
+        amountInput.step = step;
+        amountSlider.min = min;
+        amountSlider.max = max;
+        amountSlider.step = step;
+
+        // Reset or clamp value if outside new range
+        const currentValue = parseFloat(amountInput.value);
+        if (currentValue > max || currentValue < min || isNaN(currentValue)) {
+          amountInput.value = defaultValue;
+          amountSlider.value = defaultValue;
+        }
+
+        // Sync slider min/max labels (manual update)
+        const minLabel = amountSlider.nextElementSibling.children[0];
+        const maxLabel = amountSlider.nextElementSibling.children[1];
+        minLabel.textContent = formatINR(min);
+        maxLabel.textContent = formatINR(max);
+
+        calculateAndRender();
+      }
+
+      /**
        * Main function to read inputs, perform calculation, and update UI/Charts.
        */
       function calculateAndRender() {
@@ -643,14 +761,33 @@
         let annualGrowth = [];
 
         if (investmentMode === "SIP") {
-          totalInvested = P * T * MONTHS_PER_YEAR;
+          let periodsPerYear, frequencyName;
+
+          switch (sipFrequency) {
+            case "Daily":
+              periodsPerYear = DAYS_PER_YEAR;
+              frequencyName = "Daily";
+              break;
+            case "Weekly":
+              periodsPerYear = WEEKS_PER_YEAR;
+              frequencyName = "Weekly";
+              break;
+            case "Monthly":
+            default:
+              periodsPerYear = MONTHS_PER_YEAR;
+              frequencyName = "Monthly";
+          }
+
+          const totalPeriods = T * periodsPerYear;
+          // Total Invested is P * Total Periods
+          totalInvested = P * totalPeriods;
 
           // Calculate annual growth for Line Chart
           for (let t = 1; t <= T; t++) {
-            const value = calculateSIPV(P, R_annual, t);
+            const value = calculateSIPV(P, R_annual, t, periodsPerYear);
             annualGrowth.push({ year: t, value: value });
           }
-          finalValue = calculateSIPV(P, R_annual, T);
+          finalValue = calculateSIPV(P, R_annual, T, periodsPerYear);
         } else {
           // Lumpsum mode
           totalInvested = P;
@@ -679,7 +816,10 @@
       function handleModeChange(mode) {
         investmentMode = mode;
 
-        // UI Button styling
+        // Toggle SIP Frequency Card visibility
+        sipFrequencyCard.classList.toggle("hidden", mode !== "SIP");
+
+        // UI Button styling (SIP/Lumpsum)
         if (mode === "SIP") {
           sipModeBtn.classList.add(
             "bg-white",
@@ -708,15 +848,8 @@
             "dark:hover:bg-slate-500/50"
           );
 
-          amountLabel.textContent = "Monthly Investment (₹)";
-          amountInput.min = 500;
-          amountInput.max = 100000;
-          amountInput.step = 500;
-          amountInput.value = 5000;
-          amountSlider.min = 500;
-          amountSlider.max = 100000;
-          amountSlider.step = 500;
-          amountSlider.value = 5000;
+          // Re-apply current SIP frequency settings (handles label/slider updates)
+          handleFrequencyChange(sipFrequency);
         } else {
           // Lumpsum
           lumpsumModeBtn.classList.add(
@@ -755,15 +888,15 @@
           amountSlider.max = 5000000;
           amountSlider.step = 1000;
           amountSlider.value = 100000;
+
+          // Sync slider min/max labels (manual update)
+          const minLabel = amountSlider.nextElementSibling.children[0];
+          const maxLabel = amountSlider.nextElementSibling.children[1];
+          minLabel.textContent = formatINR(parseFloat(amountSlider.min));
+          maxLabel.textContent = formatINR(parseFloat(amountSlider.max));
+
+          calculateAndRender();
         }
-
-        // Sync slider min/max labels (a bit manual, but clear for the user)
-        const minLabel = amountSlider.nextElementSibling.children[0];
-        const maxLabel = amountSlider.nextElementSibling.children[1];
-        minLabel.textContent = formatINR(parseFloat(amountSlider.min));
-        maxLabel.textContent = formatINR(parseFloat(amountSlider.max));
-
-        calculateAndRender();
       }
 
       // Sync slider and input value
@@ -804,6 +937,13 @@
         lumpsumModeBtn.addEventListener("click", () =>
           handleModeChange("Lumpsum")
         );
+
+        // New Frequency Toggles
+        freqButtons.forEach((btn) => {
+          btn.addEventListener("click", (e) =>
+            handleFrequencyChange(e.currentTarget.dataset.freq)
+          );
+        });
       }
 
       // Dark/Light Mode Toggle
@@ -859,7 +999,7 @@
         initTheme();
         syncSliders();
         setupModeToggles();
-        // Start with SIP mode and initial calculation
+        // Start with SIP mode and initial calculation, which calls handleFrequencyChange('Monthly')
         handleModeChange("SIP");
       };
     </script>
