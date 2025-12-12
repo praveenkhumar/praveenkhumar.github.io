@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fintech Investment Calculator</title>
+    <title>Unified Financial Calculator (SIP, Lumpsum, SWP)</title>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Load Chart.js for dynamic charts -->
@@ -145,7 +145,7 @@
           );
         "
       >
-        Mutual Fund Goal Planner
+        Financial Goal Planner & Withdrawal Tracker
       </h1>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -153,28 +153,36 @@
         <div class="lg:col-span-1 space-y-6">
           <!-- Investment Mode Toggle -->
           <div class="glass-card p-4 rounded-xl">
-            <h2 class="text-xl font-semibold mb-3">Investment Type</h2>
+            <h2 class="text-xl font-semibold mb-3">Calculation Mode</h2>
             <div
-              class="flex space-x-2 p-1 bg-gray-200 dark:bg-slate-700 rounded-lg transition-colors duration-300"
+              class="flex space-x-2 p-1 bg-gray-200 dark:bg-slate-700 rounded-lg text-sm transition-colors duration-300"
             >
               <button
                 id="sipModeBtn"
-                class="flex-1 py-2 px-4 rounded-lg font-medium transition-all duration-300 bg-white dark:bg-slate-600 text-indigo-600 dark:text-indigo-400 shadow-md"
+                class="flex-1 py-2 px-2 rounded-lg font-medium transition-all duration-300 bg-white dark:bg-slate-600 text-indigo-600 dark:text-indigo-400 shadow-md"
               >
-                Systematic Investment Plan (SIP)
+                SIP
               </button>
               <button
                 id="lumpsumModeBtn"
-                class="flex-1 py-2 px-4 rounded-lg font-medium transition-all duration-300 text-gray-600 dark:text-gray-300 hover:bg-white/50 dark:hover:bg-slate-500/50"
+                class="flex-1 py-2 px-2 rounded-lg font-medium transition-all duration-300 text-gray-600 dark:text-gray-300 hover:bg-white/50 dark:hover:bg-slate-500/50"
               >
-                One-Time Lumpsum
+                Lumpsum
+              </button>
+              <button
+                id="swpModeBtn"
+                class="flex-1 py-2 px-2 rounded-lg font-medium transition-all duration-300 text-gray-600 dark:text-gray-300 hover:bg-white/50 dark:hover:bg-slate-500/50"
+              >
+                SWP
               </button>
             </div>
           </div>
 
-          <!-- NEW: SIP Frequency Selector -->
-          <div id="sipFrequencyCard" class="glass-card p-4 rounded-xl">
-            <h2 class="text-xl font-semibold mb-3">SIP Frequency</h2>
+          <!-- SIP/SWP Frequency Selector (Hidden when Lumpsum) -->
+          <div id="frequencyCard" class="glass-card p-4 rounded-xl">
+            <h2 class="text-xl font-semibold mb-3" id="frequencyTitle">
+              SIP Frequency
+            </h2>
             <div
               class="flex space-x-2 p-1 bg-gray-200 dark:bg-slate-700 rounded-lg text-sm transition-colors duration-300"
             >
@@ -204,14 +212,16 @@
 
           <!-- Input Controls Card -->
           <div class="glass-card p-6 rounded-xl">
-            <h2 class="text-xl font-semibold mb-4">Investment Parameters</h2>
+            <h2 class="text-xl font-semibold mb-4" id="inputCardTitle">
+              Investment Parameters
+            </h2>
 
-            <!-- 1. Investment Amount Input (SIP/Lumpsum) -->
+            <!-- 1. Principal/Investment/Corpus Amount Input -->
             <div class="mb-5">
               <label
-                for="investmentAmount"
+                for="principalAmount"
                 class="block text-sm font-medium mb-2"
-                id="amountLabel"
+                id="principalLabel"
                 >Monthly Investment (₹)</label
               >
               <div class="relative mb-2">
@@ -221,7 +231,7 @@
                 >
                 <input
                   type="number"
-                  id="investmentAmount"
+                  id="principalAmount"
                   value="5000"
                   min="500"
                   max="100000"
@@ -231,7 +241,7 @@
               </div>
               <input
                 type="range"
-                id="investmentAmountSlider"
+                id="principalAmountSlider"
                 min="500"
                 max="100000"
                 step="500"
@@ -239,7 +249,8 @@
                 class="w-full h-2 rounded-full cursor-pointer"
               />
               <div class="flex justify-between text-xs mt-1 text-gray-500">
-                <span>₹500</span><span>₹1,00,000</span>
+                <span id="principalMin">₹500</span
+                ><span id="principalMax">₹1,00,000</span>
               </div>
             </div>
 
@@ -277,17 +288,18 @@
               </div>
             </div>
 
-            <!-- 3. Investment Duration (Years) -->
+            <!-- 3. Withdrawal/Investment Duration (Years) -->
             <div class="mb-2">
               <label
-                for="investmentDuration"
+                for="duration"
                 class="block text-sm font-medium mb-2"
+                id="durationLabel"
                 >Investment Duration (Years)</label
               >
               <div class="relative mb-2">
                 <input
                   type="number"
-                  id="investmentDuration"
+                  id="duration"
                   value="10"
                   min="1"
                   max="100"
@@ -301,7 +313,7 @@
               </div>
               <input
                 type="range"
-                id="investmentDurationSlider"
+                id="durationSlider"
                 min="1"
                 max="100"
                 step="1"
@@ -310,6 +322,43 @@
               />
               <div class="flex justify-between text-xs mt-1 text-gray-500">
                 <span>1 Yr</span><span>100 Yrs</span>
+              </div>
+            </div>
+
+            <!-- 4. SWP Withdrawal Rate/Amount Input (SWP Mode ONLY) -->
+            <div id="swpWithdrawalInput" class="mb-5 hidden">
+              <label
+                for="withdrawalRate"
+                class="block text-sm font-medium mb-2"
+                id="withdrawalRateLabel"
+                >Annual Withdrawal Rate (%)</label
+              >
+              <div class="relative mb-2">
+                <input
+                  type="number"
+                  id="withdrawalRate"
+                  value="4"
+                  min="0.5"
+                  max="20"
+                  step="0.1"
+                  class="w-full py-3 pr-8 pl-4 rounded-lg border-2 border-indigo-200 dark:border-indigo-800 focus:ring-indigo-500 focus:border-indigo-500 bg-white dark:bg-slate-700 text-sm transition-colors duration-300"
+                />
+                <span
+                  class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+                  >%</span
+                >
+              </div>
+              <input
+                type="range"
+                id="withdrawalRateSlider"
+                min="0.5"
+                max="20"
+                step="0.1"
+                value="4"
+                class="w-full h-2 rounded-full cursor-pointer"
+              />
+              <div class="flex justify-between text-xs mt-1 text-gray-500">
+                <span>0.5%</span><span>20%</span>
               </div>
             </div>
           </div>
@@ -321,49 +370,62 @@
           <div class="glass-card p-6 rounded-xl transition-all duration-300">
             <h2
               class="text-2xl font-bold text-center mb-6 text-indigo-600 dark:text-indigo-400"
+              id="resultsTitle"
             >
               Maturity Projection
             </h2>
 
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <!-- Total Invested -->
+              <!-- Total Invested/Initial Corpus -->
               <div
                 class="text-center p-3 border-b-2 sm:border-b-0 sm:border-r-2 border-indigo-200 dark:border-indigo-800"
               >
-                <p class="text-sm font-medium opacity-75">
+                <p class="text-sm font-medium opacity-75" id="metric1Label">
                   Total Invested Amount
                 </p>
                 <p
-                  id="totalInvested"
+                  id="metric1Value"
                   class="text-xl md:text-2xl font-extrabold mt-1 text-gray-700 dark:text-gray-200"
                 >
                   ₹0
                 </p>
               </div>
-              <!-- Estimated Returns -->
+              <!-- Estimated Returns/Total Withdrawal -->
               <div
                 class="text-center p-3 border-b-2 sm:border-b-0 sm:border-r-2 border-indigo-200 dark:border-indigo-800"
               >
-                <p class="text-sm font-medium opacity-75">Estimated Returns</p>
+                <p class="text-sm font-medium opacity-75" id="metric2Label">
+                  Estimated Returns
+                </p>
                 <p
-                  id="estimatedReturns"
+                  id="metric2Value"
                   class="text-xl md:text-2xl font-extrabold mt-1 text-green-600 dark:text-green-400"
                 >
                   ₹0
                 </p>
               </div>
-              <!-- Final Value -->
+              <!-- Final Value/Corpus -->
               <div class="text-center p-3">
-                <p class="text-sm font-medium opacity-75">
+                <p class="text-sm font-medium opacity-75" id="metric3Label">
                   Final Maturity Value
                 </p>
                 <p
-                  id="finalMaturityValue"
+                  id="metric3Value"
                   class="text-2xl md:text-3xl font-black mt-1 text-indigo-700 dark:text-indigo-300"
                 >
                   ₹0
                 </p>
               </div>
+            </div>
+
+            <!-- SWP Exhaustion Warning -->
+            <div
+              id="swpWarning"
+              class="hidden mt-6 p-3 bg-red-100 dark:bg-red-900 border-l-4 border-red-500 rounded-lg text-red-700 dark:text-red-300"
+            >
+              <p class="font-semibold" id="swpWarningText">
+                Corpus exhausted after X years.
+              </p>
             </div>
           </div>
 
@@ -371,15 +433,21 @@
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <!-- Pie Chart: Invested vs Returns -->
             <div class="glass-card p-6 rounded-xl">
-              <h3 class="text-lg font-semibold mb-4 text-center">
-                Invested vs. Returns (Final Value Composition)
+              <h3
+                class="text-lg font-semibold mb-4 text-center"
+                id="pieChartTitle"
+              >
+                Invested vs. Returns
               </h3>
               <canvas id="pieChart" class="w-full"></canvas>
             </div>
 
             <!-- Line Chart: Growth Over Years -->
             <div class="glass-card p-6 rounded-xl">
-              <h3 class="text-lg font-semibold mb-4 text-center">
+              <h3
+                class="text-lg font-semibold mb-4 text-center"
+                id="lineChartTitle"
+              >
                 Investment Growth Over Time
               </h3>
               <canvas id="lineChart" class="w-full"></canvas>
@@ -391,8 +459,8 @@
 
     <script>
       // Global state and constants
-      let investmentMode = "SIP"; // 'SIP' or 'Lumpsum'
-      let sipFrequency = "Monthly"; // 'Daily', 'Weekly', or 'Monthly'
+      let calculationMode = "SIP"; // 'SIP', 'Lumpsum', or 'SWP'
+      let periodFrequency = "Monthly"; // 'Daily', 'Weekly', or 'Monthly'
       const DAYS_PER_YEAR = 365.25; // Use 365.25 for average
       const WEEKS_PER_YEAR = 52.14; // Use 52.14 for average
       const MONTHS_PER_YEAR = 12; // Remains 12
@@ -403,26 +471,48 @@
       const moonIcon = document.getElementById("moonIcon");
       const body = document.body;
 
+      // Mode Toggles
       const sipModeBtn = document.getElementById("sipModeBtn");
       const lumpsumModeBtn = document.getElementById("lumpsumModeBtn");
+      const swpModeBtn = document.getElementById("swpModeBtn");
 
-      const sipFrequencyCard = document.getElementById("sipFrequencyCard");
-      const freqButtons = document.querySelectorAll("#sipFrequencyCard button");
+      // Frequency Card
+      const frequencyCard = document.getElementById("frequencyCard");
+      const frequencyTitle = document.getElementById("frequencyTitle");
+      const freqButtons = document.querySelectorAll("#frequencyCard button");
 
-      const amountLabel = document.getElementById("amountLabel");
-      const amountInput = document.getElementById("investmentAmount");
-      const amountSlider = document.getElementById("investmentAmountSlider");
+      // Input Elements
+      const principalLabel = document.getElementById("principalLabel");
+      const principalInput = document.getElementById("principalAmount");
+      const principalSlider = document.getElementById("principalAmountSlider");
+      const principalMin = document.getElementById("principalMin");
+      const principalMax = document.getElementById("principalMax");
+
       const rateInput = document.getElementById("expectedReturn");
       const rateSlider = document.getElementById("expectedReturnSlider");
-      const durationInput = document.getElementById("investmentDuration");
-      const durationSlider = document.getElementById(
-        "investmentDurationSlider"
+
+      const durationLabel = document.getElementById("durationLabel");
+      const durationInput = document.getElementById("duration");
+      const durationSlider = document.getElementById("durationSlider");
+
+      const swpWithdrawalInput = document.getElementById("swpWithdrawalInput");
+      const withdrawalRateInput = document.getElementById("withdrawalRate");
+      const withdrawalRateSlider = document.getElementById(
+        "withdrawalRateSlider"
       );
 
-      const totalInvestedEl = document.getElementById("totalInvested");
-      const estimatedReturnsEl = document.getElementById("estimatedReturns");
-      const finalMaturityValueEl =
-        document.getElementById("finalMaturityValue");
+      // Result Elements
+      const resultsTitle = document.getElementById("resultsTitle");
+      const metric1Label = document.getElementById("metric1Label");
+      const metric1Value = document.getElementById("metric1Value");
+      const metric2Label = document.getElementById("metric2Label");
+      const metric2Value = document.getElementById("metric2Value");
+      const metric3Label = document.getElementById("metric3Label");
+      const metric3Value = document.getElementById("metric3Value");
+      const swpWarning = document.getElementById("swpWarning");
+      const swpWarningText = document.getElementById("swpWarningText");
+      const pieChartTitle = document.getElementById("pieChartTitle");
+      const lineChartTitle = document.getElementById("lineChartTitle");
 
       let pieChart, lineChart;
 
@@ -453,59 +543,165 @@
 
       /**
        * Calculates Future Value (FV) for SIP based on frequency.
-       * FV = P * [ ((1 + i)^n - 1) / i ] * (1 + i)
-       * Where i = r/periodsPerYear, n = total periods
-       * @param {number} P - Investment amount per period.
-       * @param {number} r - Annual rate of return (as decimal, e.g., 0.12).
-       * @param {number} t - Duration in years.
-       * @param {number} periodsPerYear - Number of investment periods per year.
-       * @returns {number} The final maturity value.
        */
       function calculateSIPV(P, r, t, periodsPerYear) {
         const i = r / periodsPerYear; // Periodic rate
         const n = t * periodsPerYear; // Total number of periods
 
-        if (r === 0) return P * n; // Simple investment without returns
+        if (r === 0) return P * n;
 
         const totalPeriods = Math.round(n);
-
         // Standard FV of Annuity formula, compounded at the start of the period
         return P * ((Math.pow(1 + i, totalPeriods) - 1) / i) * (1 + i);
       }
 
       /**
        * Calculates Future Value (FV) for Lumpsum.
-       * FV = P * (1 + r)^t
-       * @param {number} P - One-time investment amount.
-       * @param {number} r - Annual rate of return (as decimal, e.g., 0.12).
-       * @param {number} t - Duration in years.
-       * @returns {number} The final maturity value.
        */
       function calculateLumpsumV(P, r, t) {
         return P * Math.pow(1 + r, t);
       }
 
+      /**
+       * Calculates the Systematic Withdrawal Plan (SWP) projection.
+       * This simulates the monthly growth and withdrawal process.
+       */
+      function calculateSWP(
+        initialCorpus,
+        growthRateAnnual,
+        withdrawalRateAnnual,
+        years,
+        periodsPerYear
+      ) {
+        const totalAnnualWithdrawal = initialCorpus * withdrawalRateAnnual;
+        const withdrawalPerPeriod = totalAnnualWithdrawal / periodsPerYear;
+        const ratePerPeriod = growthRateAnnual / periodsPerYear;
+
+        let currentCorpus = initialCorpus;
+        let totalWithdrawn = 0;
+        let exhaustionYear = null;
+        let annualGrowth = [];
+
+        for (let year = 1; year <= years; year++) {
+          let yearEndCorpus = currentCorpus;
+          let annualGrowthAccumulated = 0;
+          let annualWithdrawn = 0;
+
+          if (exhaustionYear) {
+            // If corpus is already exhausted, just track zero
+            annualGrowth.push({ year: year, value: 0 });
+            continue;
+          }
+
+          for (let period = 1; period <= periodsPerYear; period++) {
+            // 1. Calculate growth for the current period
+            const periodGrowth = yearEndCorpus * ratePerPeriod;
+
+            // 2. Add growth
+            yearEndCorpus += periodGrowth;
+            annualGrowthAccumulated += periodGrowth;
+
+            // 3. Apply withdrawal (at the end of the period)
+            let actualWithdrawal = withdrawalPerPeriod;
+            if (yearEndCorpus >= withdrawalPerPeriod) {
+              yearEndCorpus -= withdrawalPerPeriod;
+              annualWithdrawn += withdrawalPerPeriod;
+            } else {
+              // Corpus exhaustion
+              actualWithdrawal = yearEndCorpus;
+              yearEndCorpus = 0;
+              annualWithdrawn += actualWithdrawal;
+              exhaustionYear = year;
+              break; // End periods for this year
+            }
+          }
+
+          // Update for next iteration
+          currentCorpus = yearEndCorpus;
+          totalWithdrawn += annualWithdrawn;
+
+          // Track annual values for chart
+          annualGrowth.push({
+            year: year,
+            corpus: currentCorpus,
+            withdrawn: annualWithdrawn,
+            totalWithdrawn: totalWithdrawn,
+          });
+
+          if (exhaustionYear) break;
+        }
+
+        return {
+          finalCorpus: currentCorpus,
+          totalWithdrawn: totalWithdrawn,
+          exhaustionYear: exhaustionYear,
+          annualData: annualGrowth,
+          totalAnnualWithdrawal: totalAnnualWithdrawal,
+        };
+      }
+
       // --- Chart & UI Update Functions ---
 
-      function updateCharts(totalInvested, finalValue, annualGrowth) {
-        const estimatedReturns = finalValue - totalInvested;
+      function updateCharts(data, mode) {
+        let labels,
+          dataInvested,
+          dataReturns,
+          dataCorpus,
+          dataWithdrawn,
+          color1,
+          color2,
+          label1,
+          label2;
 
-        // 1. Pie Chart Data
+        if (mode === "SWP") {
+          const finalCorpus = data.finalCorpus;
+          const totalWithdrawn = data.totalWithdrawn;
+
+          // Pie Chart Data: Final state breakdown
+          labels = ["Corpus Remaining", "Total Withdrawn"];
+          dataInvested = finalCorpus;
+          dataReturns = totalWithdrawn; // Using totalWithdrawn as the second metric
+          color1 = "rgba(99, 102, 241, 1)"; // Primary (Corpus)
+          color2 = "rgba(16, 185, 129, 1)"; // Green (Withdrawn)
+
+          // Line Chart Data: Corpus and Total Withdrawn over time
+          labels = data.annualData.map((g) => g.year);
+          dataCorpus = data.annualData.map((g) => g.corpus);
+          dataWithdrawn = data.annualData.map((g) => g.totalWithdrawn);
+          label1 = "Corpus Remaining";
+          label2 = "Total Amount Withdrawn";
+        } else {
+          // SIP or Lumpsum
+          const totalInvested = data.totalInvested;
+          const estimatedReturns = data.finalValue - totalInvested;
+
+          // Pie Chart Data: Final state breakdown
+          labels = ["Total Invested", "Estimated Returns"];
+          dataInvested = totalInvested;
+          dataReturns = estimatedReturns;
+          color1 = "rgba(99, 102, 241, 1)"; // Primary (Invested)
+          color2 = "rgba(16, 185, 129, 1)"; // Green (Returns)
+
+          // Line Chart Data: Total Value over time
+          labels = data.annualGrowth.map((g) => g.year);
+          dataCorpus = data.annualGrowth.map((g) => g.value);
+          dataWithdrawn = data.annualGrowth.map((g) => g.invested);
+          label1 = "Maturity Value";
+          label2 = "Total Invested";
+        }
+
+        // --- Pie Chart Update ---
         const pieData = {
-          labels: ["Total Invested", "Estimated Returns"],
+          labels: labels,
           datasets: [
             {
-              data: [totalInvested, estimatedReturns],
-              backgroundColor: [
-                "rgba(99, 102, 241, 1)", // Primary (Invested)
-                "rgba(16, 185, 129, 1)", // Green (Returns)
-              ],
+              data: [dataInvested, dataReturns],
+              backgroundColor: [color1, color2],
               hoverOffset: 10,
             },
           ],
         };
 
-        // Pie Chart Configuration (Chart.js)
         const pieConfig = {
           type: "doughnut",
           data: pieData,
@@ -540,6 +736,8 @@
                     (a, b) => a + b,
                     0
                   );
+                  // Prevent division by zero if all values are 0
+                  if (total === 0) return "0%";
                   const percentage = ((value / total) * 100).toFixed(1) + "%";
                   return percentage;
                 },
@@ -559,22 +757,32 @@
           pieChart = new Chart(document.getElementById("pieChart"), pieConfig);
         }
 
-        // 2. Line Chart Data
-        const labels = annualGrowth.map((g) => g.year);
-        const data = annualGrowth.map((g) => g.value);
-
+        // --- Line Chart Update ---
         const lineData = {
           labels: labels,
           datasets: [
             {
-              label: "Maturity Value",
-              data: data,
-              borderColor: "rgba(129, 140, 248, 1)", // Indigo-400
+              label: label1,
+              data: dataCorpus,
+              borderColor: "rgba(129, 140, 248, 1)", // Indigo-400 (Value/Corpus)
               backgroundColor: "rgba(129, 140, 248, 0.5)",
               fill: "start",
               tension: 0.4,
               pointRadius: 3,
               pointHoverRadius: 5,
+              order: 1, // Ensure corpus/value line is drawn first
+            },
+            {
+              label: label2,
+              data: dataWithdrawn,
+              borderColor: "rgba(16, 185, 129, 1)", // Green (Invested/Withdrawn)
+              backgroundColor: "rgba(16, 185, 129, 0.2)",
+              fill: false,
+              tension: 0.4,
+              pointRadius: 3,
+              pointHoverRadius: 5,
+              borderDash: mode === "SWP" ? [5, 5] : [], // Dashed line for SWP total withdrawn
+              order: 2,
             },
           ],
         };
@@ -616,7 +824,15 @@
               },
             },
             plugins: {
-              legend: { display: false },
+              legend: {
+                position: "top",
+                labels: {
+                  color: body.classList.contains("dark")
+                    ? "#f1f5f9"
+                    : "#1e293b",
+                  usePointStyle: true,
+                },
+              },
               tooltip: {
                 callbacks: {
                   label: function (context) {
@@ -637,19 +853,18 @@
 
         if (lineChart) {
           lineChart.data = lineData;
-          lineChart.options.scales.y.grid.color = body.classList.contains(
-            "dark"
-          )
+          // Theme updates for line chart
+          const isDark = body.classList.contains("dark");
+          lineChart.options.scales.y.grid.color = isDark
             ? "rgba(255,255,255,0.1)"
             : "rgba(0,0,0,0.1)";
-          lineChart.options.scales.y.ticks.color = body.classList.contains(
-            "dark"
-          )
+          lineChart.options.scales.y.ticks.color = isDark
             ? "#f1f5f9"
             : "#1e293b";
-          lineChart.options.scales.x.ticks.color = body.classList.contains(
-            "dark"
-          )
+          lineChart.options.scales.x.ticks.color = isDark
+            ? "#f1f5f9"
+            : "#1e293b";
+          lineChart.options.plugins.legend.labels.color = isDark
             ? "#f1f5f9"
             : "#1e293b";
           lineChart.update();
@@ -662,12 +877,10 @@
       }
 
       /**
-       * Handles the change in SIP frequency (Daily/Weekly/Monthly)
+       * Handles the change in frequency (Daily/Weekly/Monthly) for SIP/SWP
        */
       function handleFrequencyChange(frequency) {
-        sipFrequency = frequency;
-
-        let label, min, max, step, defaultValue;
+        periodFrequency = frequency;
 
         // UI Button styling for frequency
         freqButtons.forEach((btn) => {
@@ -702,49 +915,6 @@
           }
         });
 
-        // Update amount parameters based on frequency for better range control
-        if (frequency === "Daily") {
-          label = "Daily Investment (₹)";
-          min = 100;
-          max = 5000;
-          step = 50;
-          defaultValue = 500;
-        } else if (frequency === "Weekly") {
-          label = "Weekly Investment (₹)";
-          min = 500;
-          max = 25000;
-          step = 100;
-          defaultValue = 2000;
-        } else {
-          // Monthly
-          label = "Monthly Investment (₹)";
-          min = 500;
-          max = 100000;
-          step = 500;
-          defaultValue = 5000;
-        }
-
-        amountLabel.textContent = label;
-        amountInput.min = min;
-        amountInput.max = max;
-        amountInput.step = step;
-        amountSlider.min = min;
-        amountSlider.max = max;
-        amountSlider.step = step;
-
-        // Reset or clamp value if outside new range
-        const currentValue = parseFloat(amountInput.value);
-        if (currentValue > max || currentValue < min || isNaN(currentValue)) {
-          amountInput.value = defaultValue;
-          amountSlider.value = defaultValue;
-        }
-
-        // Sync slider min/max labels (manual update)
-        const minLabel = amountSlider.nextElementSibling.children[0];
-        const maxLabel = amountSlider.nextElementSibling.children[1];
-        minLabel.textContent = formatINR(min);
-        maxLabel.textContent = formatINR(max);
-
         calculateAndRender();
       }
 
@@ -752,183 +922,305 @@
        * Main function to read inputs, perform calculation, and update UI/Charts.
        */
       function calculateAndRender() {
-        const P = parseFloat(amountInput.value) || 0;
-        const R_annual = (parseFloat(rateInput.value) || 0) / 100;
-        const T = parseInt(durationInput.value) || 0;
+        const P = parseFloat(principalInput.value) || 0; // Principal (SIP Amt / Lumpsum Amt / Initial Corpus)
+        const R_annual = (parseFloat(rateInput.value) || 0) / 100; // Annual Growth Rate
+        const T = parseInt(durationInput.value) || 0; // Duration in Years
+        const W_rate_annual =
+          (parseFloat(withdrawalRateInput.value) || 0) / 100; // Annual Withdrawal Rate (SWP only)
 
-        let finalValue = 0;
-        let totalInvested = 0;
-        let annualGrowth = [];
+        // Clear warning
+        swpWarning.classList.add("hidden");
 
-        if (investmentMode === "SIP") {
-          let periodsPerYear, frequencyName;
+        if (calculationMode === "SWP") {
+          let periodsPerYear = MONTHS_PER_YEAR; // SWP is typically monthly
 
-          switch (sipFrequency) {
+          // Check for valid inputs
+          if (P <= 0 || R_annual <= 0 || T <= 0 || W_rate_annual <= 0) {
+            // Reset results if inputs are invalid
+            updateSWPResults(0, 0, 0, null, 0); // Added 5th parameter for totalAnnualWithdrawal
+            return;
+          }
+
+          const result = calculateSWP(
+            P,
+            R_annual,
+            W_rate_annual,
+            T,
+            periodsPerYear
+          );
+
+          // Update Results UI
+          updateSWPResults(
+            P,
+            result.totalWithdrawn,
+            result.finalCorpus,
+            result.exhaustionYear,
+            result.totalAnnualWithdrawal
+          );
+
+          // Update Charts
+          updateCharts(result, "SWP");
+        } else if (calculationMode === "SIP") {
+          let periodsPerYear;
+          switch (periodFrequency) {
             case "Daily":
               periodsPerYear = DAYS_PER_YEAR;
-              frequencyName = "Daily";
               break;
             case "Weekly":
               periodsPerYear = WEEKS_PER_YEAR;
-              frequencyName = "Weekly";
               break;
             case "Monthly":
             default:
               periodsPerYear = MONTHS_PER_YEAR;
-              frequencyName = "Monthly";
           }
 
+          let finalValue = 0;
+          let totalInvested = 0;
+          let annualGrowth = [];
+
           const totalPeriods = T * periodsPerYear;
-          // Total Invested is P * Total Periods
           totalInvested = P * totalPeriods;
 
           // Calculate annual growth for Line Chart
           for (let t = 1; t <= T; t++) {
             const value = calculateSIPV(P, R_annual, t, periodsPerYear);
-            annualGrowth.push({ year: t, value: value });
+            const invested = P * Math.round(t * periodsPerYear);
+            annualGrowth.push({ year: t, value: value, invested: invested });
           }
           finalValue = calculateSIPV(P, R_annual, T, periodsPerYear);
+
+          // Update Results UI
+          updateInvestmentResults(totalInvested, finalValue);
+
+          // Update Charts
+          updateCharts({ totalInvested, finalValue, annualGrowth }, "SIP");
         } else {
           // Lumpsum mode
-          totalInvested = P;
+          let finalValue = 0;
+          let totalInvested = P;
+          let annualGrowth = [];
 
           // Calculate annual growth for Line Chart
           for (let t = 1; t <= T; t++) {
             const value = calculateLumpsumV(P, R_annual, t);
-            annualGrowth.push({ year: t, value: value });
+            annualGrowth.push({
+              year: t,
+              value: value,
+              invested: totalInvested,
+            });
           }
           finalValue = calculateLumpsumV(P, R_annual, T);
+
+          // Update Results UI
+          updateInvestmentResults(totalInvested, finalValue);
+
+          // Update Charts
+          updateCharts({ totalInvested, finalValue, annualGrowth }, "Lumpsum");
         }
-
-        const estimatedReturns = Math.max(0, finalValue - totalInvested);
-
-        // Update result elements
-        totalInvestedEl.textContent = formatINR(totalInvested);
-        estimatedReturnsEl.textContent = formatINR(estimatedReturns);
-        finalMaturityValueEl.textContent = formatINR(finalValue);
-
-        // Update Charts
-        updateCharts(totalInvested, finalValue, annualGrowth);
       }
 
-      // --- Event Handlers ---
+      // --- Results UI Update Functions ---
+
+      function updateInvestmentResults(totalInvested, finalValue) {
+        const estimatedReturns = Math.max(0, finalValue - totalInvested);
+
+        resultsTitle.textContent = "Maturity Projection";
+        metric1Label.textContent = "Total Invested Amount";
+        metric1Value.textContent = formatINR(totalInvested);
+        metric2Label.textContent = "Estimated Returns";
+        metric2Value.textContent = formatINR(estimatedReturns);
+
+        // Fix: Ensure we are removing and adding classes individually
+        metric2Value.classList.remove("text-red-600", "dark:text-red-400");
+        metric2Value.classList.add("text-green-600", "dark:text-green-400");
+
+        metric3Label.textContent = "Final Maturity Value";
+        metric3Value.textContent = formatINR(finalValue);
+      }
+
+      function updateSWPResults(
+        initialCorpus,
+        totalWithdrawn,
+        finalCorpus,
+        exhaustionYear,
+        totalAnnualWithdrawal
+      ) {
+        const netGainLoss = finalCorpus + totalWithdrawn - initialCorpus;
+
+        resultsTitle.textContent = "Withdrawal Sustainability";
+
+        metric1Label.textContent = "Initial Corpus";
+        metric1Value.textContent = formatINR(initialCorpus);
+
+        metric2Label.textContent = "Total Amount Withdrawn";
+        metric2Value.textContent = formatINR(totalWithdrawn);
+
+        // Fix: Remove all color classes before applying the correct ones
+        metric2Value.classList.remove(
+          "text-green-600",
+          "dark:text-green-400",
+          "text-red-600",
+          "dark:text-red-400"
+        );
+
+        if (netGainLoss >= 0) {
+          metric2Value.classList.add("text-green-600", "dark:text-green-400");
+        } else {
+          metric2Value.classList.add("text-red-600", "dark:text-red-400");
+        }
+
+        metric3Label.textContent = "Final Corpus";
+        metric3Value.textContent = formatINR(finalCorpus);
+
+        pieChartTitle.textContent = "Corpus Remaining vs. Total Withdrawn";
+        lineChartTitle.textContent = "Corpus & Withdrawal Over Time";
+
+        // Show warning if exhausted
+        if (exhaustionYear !== null) {
+          swpWarning.classList.remove("hidden");
+          swpWarningText.textContent = `WARNING: Corpus was exhausted in Year ${exhaustionYear}. Total withdrawal potential was reduced.`;
+        } else {
+          swpWarning.classList.add("hidden");
+        }
+      }
+
+      // --- Event Handlers & Initialisation ---
 
       function handleModeChange(mode) {
-        investmentMode = mode;
+        calculationMode = mode;
+        const isSWP = mode === "SWP";
+        const isLumpsum = mode === "Lumpsum";
+        const isSIP = mode === "SIP";
 
-        // Toggle SIP Frequency Card visibility
-        sipFrequencyCard.classList.toggle("hidden", mode !== "SIP");
-
-        // UI Button styling (SIP/Lumpsum)
-        if (mode === "SIP") {
-          sipModeBtn.classList.add(
+        // --- Button Styling ---
+        document.querySelectorAll(".flex-1.py-2.px-2").forEach((btn) => {
+          btn.classList.remove(
             "bg-white",
             "dark:bg-slate-600",
             "text-indigo-600",
             "dark:text-indigo-400",
             "shadow-md"
           );
-          sipModeBtn.classList.remove(
+          btn.classList.add(
             "text-gray-600",
             "dark:text-gray-300",
             "hover:bg-white/50",
             "dark:hover:bg-slate-500/50"
           );
-          lumpsumModeBtn.classList.remove(
+        });
+        document
+          .getElementById(`${mode.toLowerCase()}ModeBtn`)
+          .classList.add(
             "bg-white",
             "dark:bg-slate-600",
             "text-indigo-600",
             "dark:text-indigo-400",
             "shadow-md"
           );
-          lumpsumModeBtn.classList.add(
+        document
+          .getElementById(`${mode.toLowerCase()}ModeBtn`)
+          .classList.remove(
             "text-gray-600",
             "dark:text-gray-300",
             "hover:bg-white/50",
             "dark:hover:bg-slate-500/50"
           );
 
-          // Re-apply current SIP frequency settings (handles label/slider updates)
-          handleFrequencyChange(sipFrequency);
+        // --- Input Visibility and Labels ---
+        frequencyCard.classList.toggle("hidden", isLumpsum);
+        swpWithdrawalInput.classList.toggle("hidden", !isSWP);
+
+        if (isSWP) {
+          // SWP Defaults
+          principalLabel.textContent = "Initial Corpus (₹)";
+          durationLabel.textContent = "Withdrawal Duration (Years)";
+          frequencyTitle.textContent = "Withdrawal Frequency (Monthly Only)";
+          principalInput.min = 500000;
+          principalInput.max = 100000000;
+          principalInput.step = 100000;
+          principalInput.value = 10000000;
+
+          // SWP Sliders
+          principalSlider.min = 500000;
+          principalSlider.max = 100000000;
+          principalSlider.step = 100000;
+          principalSlider.value = 10000000;
+
+          // Disable Daily/Weekly for SWP (typically monthly)
+          document.getElementById("weeklyFreqBtn").disabled = true;
+          document.getElementById("dailyFreqBtn").disabled = true;
+          document.getElementById("monthlyFreqBtn").click(); // Force monthly
+
+          // Reset withdrawal rate if needed
+          if (parseFloat(withdrawalRateInput.value) === 0) {
+            withdrawalRateInput.value = 4;
+            withdrawalRateSlider.value = 4;
+          }
+        } else if (isSIP) {
+          // SIP Defaults
+          principalLabel.textContent = `Monthly Investment (₹)`;
+          durationLabel.textContent = "Investment Duration (Years)";
+          frequencyTitle.textContent = "SIP Frequency";
+          principalInput.min = 500;
+          principalInput.max = 100000;
+          principalInput.step = 500;
+          principalInput.value = 5000;
+
+          // SIP Sliders
+          principalSlider.min = 500;
+          principalSlider.max = 100000;
+          principalSlider.step = 500;
+          principalSlider.value = 5000;
+
+          // Re-enable frequency buttons
+          document.getElementById("weeklyFreqBtn").disabled = false;
+          document.getElementById("dailyFreqBtn").disabled = false;
+          handleFrequencyChange(periodFrequency); // Re-run to update label/sliders
         } else {
-          // Lumpsum
-          lumpsumModeBtn.classList.add(
-            "bg-white",
-            "dark:bg-slate-600",
-            "text-indigo-600",
-            "dark:text-indigo-400",
-            "shadow-md"
-          );
-          lumpsumModeBtn.classList.remove(
-            "text-gray-600",
-            "dark:text-gray-300",
-            "hover:bg-white/50",
-            "dark:hover:bg-slate-500/50"
-          );
-          sipModeBtn.classList.remove(
-            "bg-white",
-            "dark:bg-slate-600",
-            "text-indigo-600",
-            "dark:text-indigo-400",
-            "shadow-md"
-          );
-          sipModeBtn.classList.add(
-            "text-gray-600",
-            "dark:text-gray-300",
-            "hover:bg-white/50",
-            "dark:hover:bg-slate-500/50"
-          );
+          // Lumpsum Defaults
+          principalLabel.textContent = "One-Time Investment Amount (₹)";
+          durationLabel.textContent = "Investment Duration (Years)";
 
-          amountLabel.textContent = "One-Time Investment Amount (₹)";
-          amountInput.min = 5000;
-          amountInput.max = 5000000;
-          amountInput.step = 1000;
-          amountInput.value = 100000;
-          amountSlider.min = 5000;
-          amountSlider.max = 5000000;
-          amountSlider.step = 1000;
-          amountSlider.value = 100000;
+          principalInput.min = 5000;
+          principalInput.max = 5000000;
+          principalInput.step = 1000;
+          principalInput.value = 100000;
 
-          // Sync slider min/max labels (manual update)
-          const minLabel = amountSlider.nextElementSibling.children[0];
-          const maxLabel = amountSlider.nextElementSibling.children[1];
-          minLabel.textContent = formatINR(parseFloat(amountSlider.min));
-          maxLabel.textContent = formatINR(parseFloat(amountSlider.max));
-
-          calculateAndRender();
+          // Lumpsum Sliders
+          principalSlider.min = 5000;
+          principalSlider.max = 5000000;
+          principalSlider.step = 1000;
+          principalSlider.value = 100000;
         }
+
+        // Update Slider Min/Max Labels
+        principalMin.textContent = formatINR(parseFloat(principalSlider.min));
+        principalMax.textContent = formatINR(parseFloat(principalSlider.max));
+
+        calculateAndRender();
       }
 
       // Sync slider and input value
       function syncSliders() {
-        // Amount
-        amountInput.addEventListener("input", () => {
-          amountSlider.value = amountInput.value;
-          calculateAndRender();
-        });
-        amountSlider.addEventListener("input", () => {
-          amountInput.value = amountSlider.value;
-          calculateAndRender();
-        });
+        const inputs = [
+          { input: principalInput, slider: principalSlider },
+          { input: rateInput, slider: rateSlider },
+          { input: durationInput, slider: durationSlider },
+          { input: withdrawalRateInput, slider: withdrawalRateSlider },
+        ];
 
-        // Rate
-        rateInput.addEventListener("input", () => {
-          rateSlider.value = rateInput.value;
-          calculateAndRender();
-        });
-        rateSlider.addEventListener("input", () => {
-          rateInput.value = rateSlider.value;
-          calculateAndRender();
-        });
-
-        // Duration
-        durationInput.addEventListener("input", () => {
-          durationSlider.value = durationInput.value;
-          calculateAndRender();
-        });
-        durationSlider.addEventListener("input", () => {
-          durationInput.value = durationSlider.value;
-          calculateAndRender();
+        inputs.forEach(({ input, slider }) => {
+          // Check if element exists before attaching listener
+          if (input && slider) {
+            input.addEventListener("input", () => {
+              slider.value = input.value;
+              calculateAndRender();
+            });
+            slider.addEventListener("input", () => {
+              input.value = slider.value;
+              calculateAndRender();
+            });
+          }
         });
       }
 
@@ -937,8 +1229,9 @@
         lumpsumModeBtn.addEventListener("click", () =>
           handleModeChange("Lumpsum")
         );
+        swpModeBtn.addEventListener("click", () => handleModeChange("SWP"));
 
-        // New Frequency Toggles
+        // Frequency Toggles
         freqButtons.forEach((btn) => {
           btn.addEventListener("click", (e) =>
             handleFrequencyChange(e.currentTarget.dataset.freq)
@@ -946,7 +1239,7 @@
         });
       }
 
-      // Dark/Light Mode Toggle
+      // Dark/Light Mode Toggle (Original functionality retained)
       function initTheme() {
         const prefersDark = window.matchMedia(
           "(prefers-color-scheme: dark)"
@@ -973,6 +1266,8 @@
           sunIcon.classList.toggle("hidden", !isDark);
 
           // Update charts colors on theme change
+          // Note: updateCharts is called by calculateAndRender, but we need manual update for theme changes
+          // if no input values changed.
           if (pieChart) {
             pieChart.options.plugins.legend.labels.color = isDark
               ? "#f1f5f9"
@@ -989,6 +1284,9 @@
             lineChart.options.scales.x.ticks.color = isDark
               ? "#f1f5f9"
               : "#1e293b";
+            lineChart.options.plugins.legend.labels.color = isDark
+              ? "#f1f5f9"
+              : "#1e293b";
             lineChart.update();
           }
         });
@@ -999,7 +1297,7 @@
         initTheme();
         syncSliders();
         setupModeToggles();
-        // Start with SIP mode and initial calculation, which calls handleFrequencyChange('Monthly')
+        // Start with SIP mode and initial calculation
         handleModeChange("SIP");
       };
     </script>
