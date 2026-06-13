@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Praveen Kumar | Portfolio</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%231a5fb4'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Roboto%2Csystem-ui%2Csans-serif' font-size='24' font-weight='700' fill='%23ffffff'%3EPK%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Display:wght@400;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
   <!-- Fallback if Google Fonts blocked -->
@@ -643,11 +644,48 @@
     /* ──────────────────────────────────────────
        RESPONSIVE
     ────────────────────────────────────────── */
+    /* ── GO TO TOP FAB ── */
+    .fab-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-lg);
+      background: var(--md-primary-container);
+      color: var(--md-on-primary-container);
+      border: none;
+      cursor: pointer;
+      font-size: 1.4rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+      transition: opacity 0.25s ease, transform 0.25s ease, background var(--transition);
+      text-decoration: none;
+    }
+    .fab-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    .fab-top:hover {
+      background: var(--md-primary);
+      color: var(--md-on-primary);
+      box-shadow: 0 6px 20px rgba(26,95,180,0.35);
+      text-decoration: none;
+    }
+
     @media (max-width: 768px) {
       .top-bar-nav .nav-btn:not(.nav-btn-always) { display: none; }
       .stats-row { grid-template-columns: 1fr 1fr; }
       .btn-tonal { margin-left: 0; margin-top: 10px; }
       .hero { padding: 60px 20px 52px; }
+      .fab-top { bottom: 20px; right: 20px; }
     }
     @media (max-width: 480px) {
       .stats-row { grid-template-columns: 1fr; }
@@ -733,7 +771,7 @@
             <div class="stat-desc">Projects shipped</div>
           </div>
           <div class="stat-card">
-            <div class="stat-num">27</div>
+            <div class="stat-num">20+</div>
             <div class="stat-desc">Certifications</div>
           </div>
         </div>
@@ -854,7 +892,9 @@
         </div>
 
       </div>
-      <a class="see-all-link" href="./certificates.html">See full list →</a>
+      <div style="text-align:center; margin-top: 24px;">
+        <a class="btn-tonal" href="./certificates.html">See full list →</a>
+      </div>
     </section>
 
     <!-- CONTACT -->
@@ -894,6 +934,9 @@
     </section>
 
   </main>
+
+  <!-- ── GO TO TOP FAB ── -->
+  <button class="fab-top" id="fabTop" aria-label="Go to top" title="Go to top">↑</button>
 
   <footer>
     © 2026 Praveen Kumar · Chennai, India · Built with Material Design 3
@@ -939,8 +982,9 @@
 
     document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
 
-    // ── Tonal bar on scroll ──
+    // ── Tonal bar + FAB on scroll ──
     const topBar = document.getElementById('topBar');
+    const fabTop = document.getElementById('fabTop');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 60) {
         topBar.style.background = 'var(--md-surface-2)';
@@ -949,7 +993,9 @@
         topBar.style.background = 'var(--md-surface-1)';
         topBar.style.boxShadow = 'none';
       }
+      fabTop.classList.toggle('visible', window.scrollY > 300);
     });
+    fabTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   </script>
 </body>
 </html>

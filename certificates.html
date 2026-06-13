@@ -1,431 +1,631 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>📄 Certifications – Praveen Kumar</title>
-    <style>
-      :root {
-        --bg-color: #f5f5f5;
-        --text-color: #333;
-        --card-color: #fff;
-        --header-bg: #222;
-        --nav-bg: #333;
-        --link-color: #fff;
-      }
-      [data-theme="dark"] {
-        --bg-color: #121212;
-        --text-color: #e0e0e0;
-        --card-color: #1e1e1e;
-        --header-bg: #111;
-        --nav-bg: #1a1a1a;
-        --link-color: #e0e0e0;
-      }
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Certifications – Praveen Kumar</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%231a5fb4'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Roboto%2Csystem-ui%2Csans-serif' font-size='24' font-weight='700' fill='%23ffffff'%3EPK%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── MD3 TOKENS (identical to index.html) ── */
+    :root {
+      --md-primary: #1a5fb4;
+      --md-on-primary: #ffffff;
+      --md-primary-container: #d8e2ff;
+      --md-on-primary-container: #001550;
+      --md-secondary: #575e71;
+      --md-on-secondary: #ffffff;
+      --md-secondary-container: #dbe2f9;
+      --md-tertiary: #6b5778;
+      --md-on-tertiary: #ffffff;
+      --md-tertiary-container: #f2daff;
+      --md-surface: #fafaff;
+      --md-surface-variant: #e1e2ec;
+      --md-on-surface: #1a1c23;
+      --md-on-surface-variant: #44475a;
+      --md-surface-1: #eef0f9;
+      --md-surface-2: #e6e8f5;
+      --md-surface-3: #dee1f1;
+      --md-outline: #757780;
+      --md-outline-variant: #c4c6d0;
+      --md-background: #fafaff;
+      --elev-1: rgba(26,95,180,0.05);
+      --elev-2: rgba(26,95,180,0.08);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 28px;
+      --radius-full: 9999px;
+      --transition: 0.2s cubic-bezier(0.2, 0, 0, 1);
+    }
+    [data-theme="dark"] {
+      --md-primary: #adc6ff;
+      --md-on-primary: #002e69;
+      --md-primary-container: #004494;
+      --md-on-primary-container: #d8e2ff;
+      --md-secondary: #bfc6dc;
+      --md-secondary-container: #3f4759;
+      --md-tertiary: #d8bcec;
+      --md-tertiary-container: #533f69;
+      --md-surface: #111318;
+      --md-surface-variant: #44475a;
+      --md-on-surface: #e3e2e9;
+      --md-on-surface-variant: #c5c6d0;
+      --md-surface-1: #1b1f27;
+      --md-surface-2: #212531;
+      --md-surface-3: #272c3a;
+      --md-outline: #8f9099;
+      --md-outline-variant: #44475a;
+      --md-background: #111318;
+      --elev-1: rgba(173,198,255,0.05);
+      --elev-2: rgba(173,198,255,0.08);
+    }
 
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        margin: 0;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background-color: var(--bg-color);
-        color: var(--text-color);
-        transition:
-          background-color 0.3s,
-          color 0.3s;
-      }
-      nav {
-        background-color: var(--nav-bg);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 20px;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-      }
-      nav a {
-        color: var(--link-color);
-        margin-right: 20px;
-        text-decoration: none;
-      }
-      nav a.active {
-        text-decoration: underline;
-      }
-      nav .toggle-container label {
-        color: var(--link-color);
-      }
-      header {
-        background-color: var(--header-bg);
-        color: white;
-        text-align: center;
-        padding: 2rem 1rem 1rem;
-      }
-      header img.profile-pic {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 4px solid #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-      }
-      header h1 {
-        margin: 10px 0 5px;
-        font-size: 3rem;
-        color: #fff;
-      }
-      header p {
-        margin-top: 0;
-      }
-      main {
-        max-width: 960px;
-        margin: 2rem auto;
-        padding: 0 1rem;
-        background-color: var(--card-color);
-      }
-      section {
-        margin-bottom: 2.5rem;
-      }
-      h2 {
-        color: #0066cc;
-        border-bottom: 1px solid #ccc;
-        padding-bottom: 0.5rem;
-      }
-      ul {
-        padding-left: 1.5rem;
-      }
-      a {
-        color: #0066cc;
-        text-decoration: none;
-      }
-      a:hover {
-        text-decoration: underline;
-      }
-      .back-link {
-        display: inline-block;
-        margin: 2rem 0;
-        background-color: #0066cc;
-        color: white;
-        padding: 10px 20px;
-        text-decoration: none;
-        border-radius: 5px;
-      }
-      .back-link:hover {
-        background-color: #004999;
-      }
-      .resume-btn {
-        display: inline-block;
-        background-color: #0066cc;
-        color: #fff;
-        padding: 10px 20px;
-        border-radius: 6px;
-        text-decoration: none;
-        margin-top: 15px;
-      }
-      .resume-btn:hover {
-        background-color: #004999;
-      }
-    </style>
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-08RGRW0GMS"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Roboto', system-ui, sans-serif;
+      background: var(--md-background);
+      color: var(--md-on-surface);
+      line-height: 1.6;
+      transition: background var(--transition), color var(--transition);
+    }
+    a { color: var(--md-primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-      gtag("config", "G-08RGRW0GMS");
-    </script>
-  </head>
-  <body>
-    <nav>
-      <div>
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="index.html#projects" class="nav-link">Projects</a>
-        <a
-          href="https://github.com/praveenkhumar/prompt-engineering-portfolio"
-          target="_blank"
-          class="nav-link"
-          >Prompt Engineering Portfolio</a
-        >
-        <a href="certificates.html" class="nav-link active">Certifications</a>
-        <a href="index.html#contact" class="nav-link">Contact</a>
-      </div>
-      <div class="toggle-container">
-        <label>
-          <input type="checkbox" id="darkToggle" />
-          <span id="toggleLabel">Dark Mode</span>
+    /* ── TOP APP BAR ── */
+    .top-bar {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--md-surface-1);
+      border-bottom: 1px solid var(--md-outline-variant);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px; height: 64px;
+      backdrop-filter: blur(12px);
+      transition: background var(--transition);
+    }
+    .top-bar-brand {
+      font-weight: 700; font-size: 1.25rem;
+      color: var(--md-primary); letter-spacing: 0.01em;
+    }
+    .top-bar-nav { display: flex; align-items: center; gap: 4px; }
+    .nav-btn {
+      display: flex; align-items: center; gap: 6px;
+      padding: 8px 16px; border-radius: var(--radius-full);
+      font-size: 0.875rem; font-weight: 500;
+      color: var(--md-on-surface-variant);
+      background: transparent; border: none; cursor: pointer;
+      text-decoration: none; letter-spacing: 0.006em;
+      transition: background var(--transition), color var(--transition);
+    }
+    .nav-btn:hover { background: var(--elev-1); color: var(--md-on-surface); text-decoration: none; }
+    .nav-btn.active { background: var(--md-secondary-container); color: var(--md-on-surface); }
+    .theme-toggle {
+      display: flex; align-items: center; gap: 8px;
+      margin-left: 12px; border-left: 1px solid var(--md-outline-variant); padding-left: 16px;
+    }
+    .switch { position: relative; width: 52px; height: 32px; flex-shrink: 0; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .switch-track {
+      position: absolute; inset: 0; border-radius: var(--radius-full);
+      background: var(--md-surface-variant); border: 2px solid var(--md-outline);
+      transition: background var(--transition), border-color var(--transition); cursor: pointer;
+    }
+    .switch-thumb {
+      position: absolute; top: 50%; left: 6px; transform: translateY(-50%);
+      width: 16px; height: 16px; border-radius: 50%; background: var(--md-outline);
+      transition: all var(--transition);
+    }
+    .switch input:checked ~ .switch-track { background: var(--md-primary); border-color: var(--md-primary); }
+    .switch input:checked ~ .switch-track .switch-thumb {
+      left: calc(100% - 22px); width: 24px; height: 24px; background: var(--md-on-primary);
+    }
+    .switch-label { font-size: 0.875rem; color: var(--md-on-surface-variant); white-space: nowrap; }
+
+    /* ── HERO (compact version) ── */
+    .hero {
+      position: relative; overflow: hidden;
+      padding: 56px 24px 48px; text-align: center;
+      background: var(--md-surface);
+    }
+    .hero-mesh {
+      position: absolute; inset: 0; z-index: 0; opacity: 0.55;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 30%, #d8e2ff 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 70%, #f2daff 0%, transparent 60%),
+        radial-gradient(ellipse 50% 70% at 50% 0%, #dbe2f9 0%, transparent 55%);
+      animation: meshShift 12s ease-in-out infinite alternate;
+    }
+    [data-theme="dark"] .hero-mesh {
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 30%, rgba(0,68,148,0.5) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 70%, rgba(83,63,105,0.5) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 70% at 50% 0%, rgba(63,71,89,0.5) 0%, transparent 55%);
+      opacity: 1;
+    }
+    @keyframes meshShift {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(20deg); }
+    }
+    @media (prefers-reduced-motion: reduce) { .hero-mesh { animation: none; } }
+    .hero-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+    .hero-avatar-wrap {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 88px; height: 88px; border-radius: 50%;
+      background: var(--md-primary-container); margin-bottom: 16px; overflow: hidden;
+      box-shadow: 0 4px 16px rgba(26,95,180,0.18); border: 3px solid var(--md-primary);
+    }
+    .hero-avatar-wrap img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+    .hero-avatar-initials { font-size: 2rem; font-weight: 700; color: var(--md-on-primary-container); }
+    .hero-name {
+      font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700;
+      line-height: 1.1; color: var(--md-on-surface); margin-bottom: 8px;
+    }
+    .hero-tagline { font-size: 1rem; font-weight: 300; color: var(--md-on-surface-variant); margin-bottom: 20px; }
+    .btn-filled {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 28px; border-radius: var(--radius-full);
+      font-size: 0.875rem; font-weight: 600; letter-spacing: 0.006em;
+      background: var(--md-primary); color: var(--md-on-primary);
+      border: none; cursor: pointer; text-decoration: none;
+      transition: box-shadow var(--transition), filter var(--transition);
+    }
+    .btn-filled:hover { filter: brightness(1.08); box-shadow: 0 2px 8px rgba(26,95,180,0.3); text-decoration: none; color: var(--md-on-primary); }
+
+    /* ── PAGE BODY ── */
+    .page-body { max-width: 1040px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    /* ── SECTION HEADER ── */
+    .section-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--md-primary); margin-bottom: 8px;
+    }
+    .section-label::before {
+      content: ''; display: block; width: 24px; height: 2px;
+      background: var(--md-primary); border-radius: 2px;
+    }
+    .section-title {
+      font-size: clamp(1.4rem, 3vw, 1.8rem); font-weight: 700;
+      color: var(--md-on-surface); margin-bottom: 20px; line-height: 1.2;
+    }
+
+    /* ── STATS ROW ── */
+    .stats-row {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 48px;
+    }
+    .stat-card {
+      background: var(--md-primary-container); border-radius: var(--radius-lg);
+      padding: 20px 16px; text-align: center;
+    }
+    .stat-num { font-size: 2rem; font-weight: 700; color: var(--md-on-primary-container); line-height: 1; }
+    .stat-desc { font-size: 0.875rem; color: var(--md-on-primary-container); opacity: 0.8; margin-top: 4px; }
+
+    /* ── CERT CATEGORY SECTION ── */
+    .cert-section { margin-bottom: 52px; }
+    .category-header {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 16px; padding-bottom: 12px;
+      border-bottom: 1px solid var(--md-outline-variant);
+    }
+    .category-icon {
+      display: flex; align-items: center; justify-content: center;
+      width: 44px; height: 44px; border-radius: var(--radius-md);
+      background: var(--md-tertiary-container); font-size: 1.4rem; flex-shrink: 0;
+    }
+    .category-title {
+      font-size: 1.25rem; font-weight: 700; color: var(--md-on-surface);
+    }
+    .category-count {
+      margin-left: auto;
+      display: inline-flex; align-items: center;
+      padding: 4px 12px; border-radius: var(--radius-full);
+      background: var(--md-secondary-container);
+      font-size: 0.75rem; font-weight: 600; color: var(--md-on-surface);
+    }
+
+    /* ── CERT CARDS GRID ── */
+    .cert-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px;
+    }
+    .cert-card {
+      background: var(--md-surface-1); border: 1px solid var(--md-outline-variant);
+      border-radius: var(--radius-lg); padding: 18px 20px;
+      display: flex; flex-direction: column; gap: 6px;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .cert-card:hover { background: var(--md-surface-2); transform: translateY(-2px); }
+    .cert-name {
+      font-size: 0.9375rem; font-weight: 500; color: var(--md-on-surface); line-height: 1.4;
+    }
+    .cert-name a { color: inherit; text-decoration: none; }
+    .cert-name a:hover { color: var(--md-primary); }
+    .cert-date {
+      font-size: 0.8rem; color: var(--md-on-surface-variant);
+      font-family: 'Roboto Mono', monospace;
+    }
+    .cert-source {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 3px 10px; border-radius: var(--radius-full);
+      background: var(--md-primary-container); color: var(--md-on-primary-container);
+      font-size: 0.72rem; font-weight: 500; width: fit-content; margin-top: 2px;
+    }
+
+    /* ── BACK BUTTON ── */
+    .back-row { margin-bottom: 40px; }
+    .btn-tonal {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 24px; border-radius: var(--radius-full);
+      font-size: 0.875rem; font-weight: 600; letter-spacing: 0.006em;
+      background: var(--md-secondary-container); color: var(--md-on-surface);
+      border: none; cursor: pointer; text-decoration: none;
+      transition: filter var(--transition);
+    }
+    .btn-tonal:hover { filter: brightness(0.96); text-decoration: none; }
+
+    footer {
+      text-align: center; padding: 24px;
+      background: var(--md-surface-1); border-top: 1px solid var(--md-outline-variant);
+      font-size: 0.875rem; color: var(--md-on-surface-variant);
+    }
+
+    /* ── GO TO TOP FAB ── */
+    .fab-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-lg);
+      background: var(--md-primary-container);
+      color: var(--md-on-primary-container);
+      border: none;
+      cursor: pointer;
+      font-size: 1.4rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+      transition: opacity 0.25s ease, transform 0.25s ease, background var(--transition);
+    }
+    .fab-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    .fab-top:hover {
+      background: var(--md-primary);
+      color: var(--md-on-primary);
+      box-shadow: 0 6px 20px rgba(26,95,180,0.35);
+    }
+
+    @media (max-width: 768px) {
+      .top-bar-nav .nav-btn:not(.nav-btn-always) { display: none; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      .fab-top { bottom: 20px; right: 20px; }
+    }
+    @media (max-width: 480px) {
+      .stats-row { grid-template-columns: 1fr; }
+      .theme-toggle .switch-label { display: none; }
+    }
+  </style>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-08RGRW0GMS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-08RGRW0GMS');
+  </script>
+</head>
+<body>
+
+  <!-- ── TOP APP BAR ── -->
+  <nav class="top-bar" id="topBar">
+    <span class="top-bar-brand">PK</span>
+    <div class="top-bar-nav">
+      <a href="index.html" class="nav-btn nav-btn-always">Home</a>
+      <a href="index.html#projects" class="nav-btn">Projects</a>
+      <a href="https://github.com/praveenkhumar/prompt-engineering-portfolio" target="_blank" class="nav-btn">Prompt Eng.</a>
+      <a href="certificates.html" class="nav-btn active nav-btn-always">Certifications</a>
+      <a href="index.html#contact" class="nav-btn">Contact</a>
+      <div class="theme-toggle">
+        <label class="switch">
+          <input type="checkbox" id="darkToggle">
+          <span class="switch-track"><span class="switch-thumb"></span></span>
         </label>
+        <span class="switch-label">Dark</span>
       </div>
-    </nav>
+    </div>
+  </nav>
 
-    <header>
-      <img src="./profilepic1.jpg" alt="Profile Picture" class="profile-pic" />
-      <h1><strong style="color: white">PRAVEEN KUMAR</strong></h1>
-      <p>
-        Backend Architecture | Scalable Systems | PHP Technical Leadership | Cloud & AI Enthusiast
-      </p>
-      <a
-        class="resume-btn"
-        href="./praveen_kumar_resume_2026.pdf#zoom=110"
-        target="_blank"
-        >Download Resume</a
-      >
-    </header>
+  <!-- ── HERO ── -->
+  <header class="hero">
+    <div class="hero-mesh" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div class="hero-avatar-wrap">
+        <img src="./profilepic1.jpg" alt="Praveen Kumar"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <span class="hero-avatar-initials" style="display:none">PK</span>
+      </div>
+      <h1 class="hero-name">Praveen Kumar</h1>
+      <p class="hero-tagline">Backend Architecture · Scalable Systems · Cloud &amp; AI Enthusiast</p>
+      <a class="btn-filled" href="./praveen_kumar_resume_2026.pdf#zoom=110" target="_blank">↓ Download Resume</a>
+    </div>
+  </header>
 
-    <main>
-      <section>
-        <h2>🧙‍♂️ Python Development</h2>
-        <ul>
-          <li>
-            <a
-              href="https://www.guvi.in/share-certificate/m2173u0B3126167GSi"
-              target="_blank"
-              >Python Programming – Nov 2025</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.tutorialspoint.com/market/certificate.jsp/TP-DC4NQ941?v=1742449060"
-              target="_blank"
-              >Python Web Dev Pro: Flask, Django, HTML, CSS & Bootstrap – Mar
-              2025</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.tutorialspoint.com/market/certificate.jsp/TP-69U2JECU?v=1742455390"
-              target="_blank"
-              >Learn API Development with FastAPI + MySQL in Python – Mar
-              2025</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.udemy.com/certificate/UC-1993460d-f971-4964-b2ec-6dc29fb17baf/"
-              target="_blank"
-              >The Complete Python Bootcamp From Zero to Hero in Python – Jan
-              2025</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.tutorialspoint.com/market/certificate.jsp/TP-EJTDGKCQ?v=1729756692"
-              target="_blank"
-              >Practical Machine Learning Using Python – Oct 2024</a
-            >
-          </li>
-        </ul>
-      </section>
+  <!-- ── MAIN BODY ── -->
+  <main class="page-body">
 
-      <section>
-        <h2>🤖 Machine Learning & AI</h2>
-        <ul>
-          <li>
-            <a
-              href="https://www.udemy.com/certificate/UC-488a9cd3-8d14-46d2-802c-818ff134e5f2/"
-              target="_blank"
-              >Machine Learning, Data Science & AI Engineering with Python – Apr
-              2025</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.mygreatlearning.com/certificate/KPXBWHFN"
-              target="_blank"
-              >Artificial Intelligence and Machine Learning Projects – May
-              2025</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.mygreatlearning.com/certificate/RUBNUECX"
-              target="_blank"
-              >Artificial Intelligence Projects – May 2025</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.mygreatlearning.com/certificate/JARACYOB"
-              target="_blank"
-              >MLOps Fundamentals – May 2025</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.mygreatlearning.com/certificate/LKVPJASI"
-              target="_blank"
-              >Robotics and AI – May 2025</a
-            >
-          </li>
-        </ul>
-      </section>
+    <div class="section-label">Learning</div>
+    <h2 class="section-title">All Certifications</h2>
 
-      <section>
-        <h2>🎉 Generative AI & Prompt Engineering</h2>
-        <ul>
-          <li>
-            <a
-              href="https://certificates.knowledgehut.com/bdb4b0b4-55da-4435-9408-61357b15d044-Gen-AI-UG-12345-20250426003.jpeg"
-              target="_blank"
-              >Generative AI Foundations Certificate Program – Apr 2025</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.mygreatlearning.com/certificate/RGBXJNJI"
-              target="_blank"
-              >Prompt Engineering for ChatGPT – May 2025</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.mygreatlearning.com/certificate/DHZLACLV"
-              target="_blank"
-              >ChatGPT for Coders – May 2025</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.mygreatlearning.com/certificate/NYLBQIIN"
-              target="_blank"
-              >Generative AI for Beginners – May 2025</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.tutorialspoint.com/market/certificate.jsp/TP-A2OC621E?v=1728481036"
-              target="_blank"
-              >ChatGPT Masterclass: Navigating AI and Prompt Engineering – Oct
-              2024</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.tutorialspoint.com/market/certificate.jsp/TP-GL7RCHIN?v=1728289331"
-              target="_blank"
-              >Building an AI ChatBot with OpenAI and Node.js – Oct 2024</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.udemy.com/certificate/UC-fe31fa56-6955-4a2b-89a4-3ec9aaa01118/"
-              target="_blank"
-              >AI Engineer Core Track: LLM Engineering, RAG, QLoRA, Agents – Sep
-              2025</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.guvi.in/share-certificate/6923K1167f6He16rdN"
-              target="_blank"
-              >Generative AI – Nov 2025</a
-            >
-          </li>
-        </ul>
-      </section>
+    <!-- Stats -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-num">20+</div>
+        <div class="stat-desc">Total certifications</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">6</div>
+        <div class="stat-desc">Domains covered</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">2026</div>
+        <div class="stat-desc">Most recent</div>
+      </div>
+    </div>
 
-      <section>
-        <h2>🚧 DevOps & Cloud</h2>
-        <ul>
-          <li>
-            <a
-              href="https://www.udemy.com/certificate/UC-304f2d18-24d3-451a-8eff-d4612a2ce1f2/"
-              target="_blank"
-              >GitHub Actions – The Complete Guide – Jan 2025</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.udemy.com/certificate/UC-54f1661a-46a9-4ad3-b815-0d0fbf095ce5/"
-              target="_blank"
-              >Decoding DevOps – From Basics to Advanced Projects with AI – May
-              2025</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.udemy.com/certificate/UC-2a636d99-6ba5-4722-938e-b1a04ac0f7d2/"
-              target="_blank"
-              >Microsoft Azure – The Complete Guide – Jan 2026</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.udemy.com/certificate/UC-f78b0168-d9ed-4649-a32b-ca6a7dc3e1c7/"
-              target="_blank"
-              >AWS Certified Solutions Architect Associate – Feb 2026</a
-            >
-          </li>
-        </ul>
-      </section>
+    <!-- Python Development -->
+    <div class="cert-section">
+      <div class="category-header">
+        <div class="category-icon">🐍</div>
+        <div class="category-title">Python Development</div>
+        <span class="category-count">5 certs</span>
+      </div>
+      <div class="cert-grid">
+        <div class="cert-card">
+          <div class="cert-name"><a href="https://www.guvi.in/share-certificate/m2173u0B3126167GSi" target="_blank">Python Programming</a></div>
+          <div class="cert-date">Nov 2025</div>
+          <span class="cert-source">GUVI</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-name"><a href="https://www.tutorialspoint.com/market/certificate.jsp/TP-DC4NQ941?v=1742449060" target="_blank">Python Web Dev Pro: Flask, Django, HTML, CSS &amp; Bootstrap</a></div>
+          <div class="cert-date">Mar 2025</div>
+          <span class="cert-source">TutorialsPoint</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-name"><a href="https://www.tutorialspoint.com/market/certificate.jsp/TP-69U2JECU?v=1742455390" target="_blank">API Development with FastAPI + MySQL in Python</a></div>
+          <div class="cert-date">Mar 2025</div>
+          <span class="cert-source">TutorialsPoint</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-name"><a href="https://www.udemy.com/certificate/UC-1993460d-f971-4964-b2ec-6dc29fb17baf/" target="_blank">The Complete Python Bootcamp: Zero to Hero</a></div>
+          <div class="cert-date">Jan 2025</div>
+          <span class="cert-source">Udemy</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-name"><a href="https://www.tutorialspoint.com/market/certificate.jsp/TP-EJTDGKCQ?v=1729756692" target="_blank">Practical Machine Learning Using Python</a></div>
+          <div class="cert-date">Oct 2024</div>
+          <span class="cert-source">TutorialsPoint</span>
+        </div>
+      </div>
+    </div>
 
-      <section>
-        <h2>🛠️ Web Development & Frameworks</h2>
-        <ul>
-          <li>
-            <a
-              href="https://www.udemy.com/certificate/UC-e05a7b0e-2d07-43b3-ac43-a962dd10a33e/"
-              target="_blank"
-              >Laravel – For Beginner to Advanced – Nov 2024</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.udemy.com/certificate/UC-6c343468-8f67-413d-ab64-d4438b0ae4fd/"
-              target="_blank"
-              >NodeJS – The Complete Guide – Nov 2024</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.udemy.com/certificate/UC-9518de39-4bde-491b-a383-f4e24b6a4f83/"
-              target="_blank"
-              >CodeIgniter – The Complete Guide – Sep 2025</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.udemy.com/certificate/UC-f6edb299-ee53-4eb6-9976-70f6974ab812/"
-              target="_blank"
-              >Symfony – The Complete Guide – Dec 2025</a
-            >
-          </li>
-        </ul>
-      </section>
+    <!-- Machine Learning & AI -->
+    <div class="cert-section">
+      <div class="category-header">
+        <div class="category-icon">🤖</div>
+        <div class="category-title">Machine Learning &amp; AI</div>
+        <span class="category-count">5 certs</span>
+      </div>
+      <div class="cert-grid">
+        <div class="cert-card">
+          <div class="cert-name"><a href="https://www.udemy.com/certificate/UC-488a9cd3-8d14-46d2-802c-818ff134e5f2/" target="_blank">Machine Learning, Data Science &amp; AI Engineering with Python</a></div>
+          <div class="cert-date">Apr 2025</div>
+          <span class="cert-source">Udemy</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-name"><a href="https://www.mygreatlearning.com/certificate/KPXBWHFN" target="_blank">Artificial Intelligence and Machine Learning Projects</a></div>
+          <div class="cert-date">May 2025</div>
+          <span class="cert-source">Great Learning</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-name"><a href="https://www.mygreatlearning.com/certificate/RUBNUECX" target="_blank">Artificial Intelligence Projects</a></div>
+          <div class="cert-date">May 2025</div>
+          <span class="cert-source">Great Learning</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-name"><a href="https://www.mygreatlearning.com/certificate/JARACYOB" target="_blank">MLOps Fundamentals</a></div>
+          <div class="cert-date">May 2025</div>
+          <span class="cert-source">Great Learning</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-name"><a href="https://www.mygreatlearning.com/certificate/LKVPJASI" target="_blank">Robotics and AI</a></div>
+          <div class="cert-date">May 2025</div>
+          <span class="cert-source">Great Learning</span>
+        </div>
+      </div>
+    </div>
 
-      <section>
-        <h2>📆 Project & Team Management</h2>
-        <ul>
-          <li>
-            <a
-              href="https://www.udemy.com/certificate/UC-91721051-c457-41ee-89d3-15bd2883b534/"
-              target="_blank"
-              >Agile Project Management (AgilePM) Certification Masterclass –
-              Mar 2025</a
-            >
-          </li>
-        </ul>
-      </section>
+    <!-- Generative AI & Prompt Engineering -->
+    <div class="cert-section">
+      <div class="category-header">
+        <div class="category-icon">✨</div>
+        <div class="category-title">Generative AI &amp; Prompt Engineering</div>
+        <span class="category-count">8 certs</span>
+      </div>
+      <div class="cert-grid">
+        <div class="cert-card">
+          <div class="cert-name"><a href="https://www.udemy.com/certificate/UC-fe31fa56-6955-4a2b-89a4-3ec9aaa01118/" target="_blank">AI Engineer Core Track: LLM Engineering, RAG, QLoRA, Agents</a></div>
+          <div class="cert-date">Sep 2025</div>
+          <span class="cert-source">Udemy</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-name"><a href="https://www.guvi.in/share-certificate/6923K1167f6He16rdN" target="_blank">Generative AI</a></div>
+          <div class="cert-date">Nov 2025</div>
+          <span class="cert-source">GUVI</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-name"><a href="https://certificates.knowledgehut.com/bdb4b0b4-55da-4435-9408-61357b15d044-Gen-AI-UG-12345-20250426003.jpeg" target="_blank">Generative AI Foundations Certificate Program</a></div>
+          <div class="cert-date">Apr 2025</div>
+          <span class="cert-source">KnowledgeHut</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-name"><a href="https://www.mygreatlearning.com/certificate/RGBXJNJI" target="_blank">Prompt Engineering for ChatGPT</a></div>
+          <div class="cert-date">May 2025</div>
+          <span class="cert-source">Great Learning</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-name"><a href="https://www.mygreatlearning.com/certificate/DHZLACLV" target="_blank">ChatGPT for Coders</a></div>
+          <div class="cert-date">May 2025</div>
+          <span class="cert-source">Great Learning</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-name"><a href="https://www.mygreatlearning.com/certificate/NYLBQIIN" target="_blank">Generative AI for Beginners</a></div>
+          <div class="cert-date">May 2025</div>
+          <span class="cert-source">Great Learning</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-name"><a href="https://www.tutorialspoint.com/market/certificate.jsp/TP-A2OC621E?v=1728481036" target="_blank">ChatGPT Masterclass: Navigating AI and Prompt Engineering</a></div>
+          <div class="cert-date">Oct 2024</div>
+          <span class="cert-source">TutorialsPoint</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-name"><a href="https://www.tutorialspoint.com/market/certificate.jsp/TP-GL7RCHIN?v=1728289331" target="_blank">Building an AI ChatBot with OpenAI and Node.js</a></div>
+          <div class="cert-date">Oct 2024</div>
+          <span class="cert-source">TutorialsPoint</span>
+        </div>
+      </div>
+    </div>
 
-      <a href="index.html" class="back-link">⬅ Back to Portfolio</a>
-    </main>
+    <!-- DevOps & Cloud -->
+    <div class="cert-section">
+      <div class="category-header">
+        <div class="category-icon">☁️</div>
+        <div class="category-title">DevOps &amp; Cloud</div>
+        <span class="category-count">4 certs</span>
+      </div>
+      <div class="cert-grid">
+        <div class="cert-card">
+          <div class="cert-name"><a href="https://www.udemy.com/certificate/UC-f78b0168-d9ed-4649-a32b-ca6a7dc3e1c7/" target="_blank">AWS Certified Solutions Architect Associate</a></div>
+          <div class="cert-date">Feb 2026</div>
+          <span class="cert-source">Udemy</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-name"><a href="https://www.udemy.com/certificate/UC-2a636d99-6ba5-4722-938e-b1a04ac0f7d2/" target="_blank">Microsoft Azure – The Complete Guide</a></div>
+          <div class="cert-date">Jan 2026</div>
+          <span class="cert-source">Udemy</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-name"><a href="https://www.udemy.com/certificate/UC-54f1661a-46a9-4ad3-b815-0d0fbf095ce5/" target="_blank">Decoding DevOps – Basics to Advanced Projects with AI</a></div>
+          <div class="cert-date">May 2025</div>
+          <span class="cert-source">Udemy</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-name"><a href="https://www.udemy.com/certificate/UC-304f2d18-24d3-451a-8eff-d4612a2ce1f2/" target="_blank">GitHub Actions – The Complete Guide</a></div>
+          <div class="cert-date">Jan 2025</div>
+          <span class="cert-source">Udemy</span>
+        </div>
+      </div>
+    </div>
 
-    <script>
-      const toggle = document.getElementById("darkToggle");
-      const root = document.documentElement;
+    <!-- Web Development & Frameworks -->
+    <div class="cert-section">
+      <div class="category-header">
+        <div class="category-icon">🛠️</div>
+        <div class="category-title">Web Development &amp; Frameworks</div>
+        <span class="category-count">4 certs</span>
+      </div>
+      <div class="cert-grid">
+        <div class="cert-card">
+          <div class="cert-name"><a href="https://www.udemy.com/certificate/UC-6c343468-8f67-413d-ab64-d4438b0ae4fd/" target="_blank">NodeJS – The Complete Guide (MVC, REST APIs, GraphQL, Deno)</a></div>
+          <div class="cert-date">Nov 2024</div>
+          <span class="cert-source">Udemy</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-name"><a href="https://www.udemy.com/certificate/UC-e05a7b0e-2d07-43b3-ac43-a962dd10a33e/" target="_blank">Laravel – For Beginner to Advanced</a></div>
+          <div class="cert-date">Nov 2024</div>
+          <span class="cert-source">Udemy</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-name"><a href="https://www.udemy.com/certificate/UC-9518de39-4bde-491b-a383-f4e24b6a4f83/" target="_blank">CodeIgniter – The Complete Guide</a></div>
+          <div class="cert-date">Sep 2025</div>
+          <span class="cert-source">Udemy</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-name"><a href="https://www.udemy.com/certificate/UC-f6edb299-ee53-4eb6-9976-70f6974ab812/" target="_blank">Symfony – The Complete Guide</a></div>
+          <div class="cert-date">Dec 2025</div>
+          <span class="cert-source">Udemy</span>
+        </div>
+      </div>
+    </div>
 
-      toggle.addEventListener("change", () => {
-        if (toggle.checked) {
-          root.setAttribute("data-theme", "dark");
-        } else {
-          root.removeAttribute("data-theme");
-        }
-      });
-    </script>
-  </body>
+    <!-- Project & Team Management -->
+    <div class="cert-section">
+      <div class="category-header">
+        <div class="category-icon">📋</div>
+        <div class="category-title">Project &amp; Team Management</div>
+        <span class="category-count">1 cert</span>
+      </div>
+      <div class="cert-grid">
+        <div class="cert-card">
+          <div class="cert-name"><a href="https://www.udemy.com/certificate/UC-91721051-c457-41ee-89d3-15bd2883b534/" target="_blank">Agile Project Management (AgilePM) Certification Masterclass</a></div>
+          <div class="cert-date">Mar 2025</div>
+          <span class="cert-source">Udemy</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back button -->
+    <div class="back-row">
+      <a class="btn-tonal" href="index.html">← Back to Portfolio</a>
+    </div>
+
+  </main>
+
+  <!-- ── GO TO TOP FAB ── -->
+  <button class="fab-top" id="fabTop" aria-label="Go to top" title="Go to top">↑</button>
+
+  <footer>
+    © 2026 Praveen Kumar · Chennai, India · Built with Material Design 3
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('darkToggle');
+    const root = document.documentElement;
+    const topBar = document.getElementById('topBar');
+
+    if (localStorage.getItem('theme') === 'dark') {
+      root.setAttribute('data-theme', 'dark');
+      toggle.checked = true;
+    }
+    toggle.addEventListener('change', () => {
+      if (toggle.checked) {
+        root.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        root.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+      }
+    });
+
+    const fabTop = document.getElementById('fabTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) {
+        topBar.style.background = 'var(--md-surface-2)';
+        topBar.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)';
+      } else {
+        topBar.style.background = 'var(--md-surface-1)';
+        topBar.style.boxShadow = 'none';
+      }
+      fabTop.classList.toggle('visible', window.scrollY > 300);
+    });
+    fabTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+</body>
 </html>
