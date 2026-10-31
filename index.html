@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-08RGRW0GMS"></script>
@@ -10,7 +10,7 @@
     gtag('config', 'G-08RGRW0GMS');
   </script>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Praveen Kumar | Portfolio</title>
   
   <!-- Primary Meta Tags -->
@@ -32,61 +32,82 @@
   <meta property="twitter:image" content="https://praveenkhumar.github.io/profile.jpg" />
 
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23111111'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='system-ui%2Csans-serif' font-size='22' font-weight='700' fill='%23ffffff'%3EPK%3C/text%3E%3C/svg%3E">
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
     /* ──────────────────────────────────────────
-       DESIGN TOKEN SYSTEM & VARIABLES (LIGHT MONOCHROME)
+       APPLE DESIGN SYSTEM TOKENS & SURFACES
     ────────────────────────────────────────── */
     :root {
-      --bg-main: #fcfcfc;
-      --bg-surface: #ffffff;
-      --bg-subtle: #f4f4f6;
-      --bg-nav: rgba(252, 252, 252, 0.8);
+      --bg-base: #fbfbfd;
+      --bg-elevated: #ffffff;
+      --bg-secondary: #f5f5f7;
+      --bg-nav: rgba(251, 251, 253, 0.82);
       
-      --text-main: #111111;
-      --text-muted: #55555c;
-      --text-inverse: #ffffff;
+      --label-primary: #1d1d1f;
+      --label-secondary: #6e6e73;
+      --label-tertiary: #86868b;
       
-      --border-color: #e4e4e7;
-      --border-hover: #111111;
+      --accent-blue: #0071e3;
+      --accent-blue-hover: #0077ed;
       
-      --accent: #111111;
-      --accent-muted: #ececec;
-      --accent-tag-bg: #f0f0f3;
-      --accent-tag-text: #3f3f46;
+      --separator: rgba(0, 0, 0, 0.08);
+      --card-border: rgba(0, 0, 0, 0.06);
+      --card-border-hover: rgba(0, 0, 0, 0.14);
       
-      --radius-sm: 6px;
-      --radius-md: 10px;
-      --radius-lg: 16px;
-      --radius-full: 9999px;
+      --font-apple: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --font-mono: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       
-      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 18px;
+      --radius-xl: 26px;
+      --radius-pill: 980px;
       
       --max-width: 1040px;
-      --transition: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-apple: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* ──────────────────────────────────────────
-       RESET & GLOBAL BASE STYLES
-    ────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
-    body {
-      font-family: var(--font-sans);
-      background: var(--bg-main);
-      color: var(--text-main);
-      line-height: 1.6;
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-size: 16px;
     }
-    a { color: inherit; text-decoration: none; transition: var(--transition); }
-    img { max-width: 100%; height: auto; display: block; }
 
-    /* Global SVG Icon Styling */
+    body {
+      font-family: var(--font-apple);
+      background-color: var(--bg-base);
+      color: var(--label-primary);
+      line-height: 1.47059;
+      font-size: 17px;
+      letter-spacing: -0.022em;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .wrap {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
     .icon-svg {
       width: 14px;
       height: 14px;
@@ -94,170 +115,220 @@
       display: inline-block;
       vertical-align: middle;
       margin-right: 6px;
+      flex-shrink: 0;
     }
 
     /* ──────────────────────────────────────────
-       NAVIGATION BAR
+       APPLE TRANSLUCENT NAVIGATION
     ────────────────────────────────────────── */
-    .nav-container {
+    header.site-nav {
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
       background: var(--bg-nav);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-color);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--separator);
     }
-    .nav-content {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 24px;
-      height: 64px;
+    .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      height: 52px;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
     }
     .nav-brand {
-      font-weight: 700;
-      font-size: 1.2rem;
-      letter-spacing: -0.02em;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--label-primary);
     }
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 24px;
     }
     .nav-item {
-      padding: 6px 14px;
-      border-radius: var(--radius-sm);
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      color: var(--label-secondary);
+      transition: color 0.15s ease;
     }
     .nav-item:hover, .nav-item.active {
-      color: var(--text-main);
-      background: var(--bg-subtle);
+      color: var(--label-primary);
+    }
+    .nav-cta {
+      background: var(--label-primary);
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      transition: background 0.2s var(--ease-apple);
+    }
+    .nav-cta:hover {
+      background: #333336;
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
     }
 
     /* ──────────────────────────────────────────
        HERO COMPONENT
     ────────────────────────────────────────── */
     .hero-section {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 48px 24px 32px;
+      padding: 72px 0 64px;
     }
     .hero-layout {
-      display: flex;
-      flex-direction: row-reverse;
+      display: grid;
+      grid-template-columns: 1fr 200px;
+      gap: 56px;
       align-items: center;
-      justify-content: space-between;
-      gap: 48px;
+    }
+    @media (max-width: 820px) {
+      .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
     }
     .hero-text {
-      flex: 1;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       gap: 16px;
     }
-    .hero-avatar-box {
-      width: 180px;
-      height: 180px;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      background: var(--bg-subtle);
-      border: 1px solid var(--border-color);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
+    .hero-eyebrow {
+      font-size: 13px;
+      line-height: 1.38462;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--accent-blue);
     }
-    .hero-avatar-box img { width: 100%; height: 100%; object-fit: cover; }
-    .avatar-initials { font-weight: 700; font-size: 3rem; color: var(--text-muted); }
-    
     .hero-name {
-      font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+      font-size: clamp(38px, 5.2vw, 56px);
+      line-height: 1.05;
       font-weight: 700;
       letter-spacing: -0.04em;
-      line-height: 1.1;
+      color: var(--label-primary);
     }
     .hero-tagline {
-      font-size: clamp(1.1rem, 2vw, 1.35rem);
-      font-weight: 400;
-      color: var(--text-muted);
-      letter-spacing: -0.02em;
+      font-size: 19px;
       line-height: 1.45;
+      font-weight: 400;
+      letter-spacing: -0.018em;
+      color: var(--label-secondary);
+      max-width: 720px;
     }
     .hero-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 4px;
+      margin-top: 6px;
     }
     .hero-chip {
       display: inline-flex;
       align-items: center;
-      font-size: 0.85rem;
+      font-size: 12px;
       font-weight: 500;
-      padding: 6px 14px;
-      border-radius: var(--radius-full);
-      background: var(--bg-surface);
-      border: 1px solid var(--border-color);
-      color: var(--text-muted);
+      letter-spacing: -0.01em;
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      background: var(--bg-secondary);
+      border: 1px solid var(--card-border);
+      color: var(--label-secondary);
     }
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 8px;
+      align-items: center;
+      gap: 14px;
+      margin-top: 14px;
     }
     
-    /* Custom Button Aesthetics */
+    /* Apple Pill Buttons */
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      border-radius: var(--radius-md);
-      font-size: 0.9rem;
-      font-weight: 600;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 22px;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      border-radius: var(--radius-pill);
+      transition: background 0.2s var(--ease-apple), transform 0.15s ease, border-color 0.2s ease;
       cursor: pointer;
-      transition: var(--transition);
     }
-    .btn-primary { background: var(--accent); color: var(--text-inverse); }
-    .btn-primary:hover { opacity: 0.9; }
-    .btn-secondary { background: var(--bg-surface); color: var(--text-main); border: 1px solid var(--border-color); }
-    .btn-secondary:hover { border-color: var(--border-hover); background: var(--bg-main); }
+    .btn-primary {
+      background: var(--accent-blue);
+      color: #ffffff;
+    }
+    .btn-primary:hover {
+      background: var(--accent-blue-hover);
+    }
+    .btn-secondary {
+      background: rgba(0, 0, 0, 0.05);
+      color: var(--label-primary);
+      border: 1px solid var(--card-border);
+    }
+    .btn-secondary:hover {
+      background: rgba(0, 0, 0, 0.08);
+      border-color: rgba(0, 0, 0, 0.12);
+    }
+
+    .hero-avatar-box {
+      width: 190px;
+      height: 190px;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      background: var(--bg-secondary);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+    }
+    .hero-avatar-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .avatar-initials {
+      font-weight: 700;
+      font-size: 2.5rem;
+      color: var(--label-tertiary);
+    }
 
     /* ──────────────────────────────────────────
-       PAGE LAYOUT & SECTION HEADERS
+       SECTION ARCHITECTURE & HEADERS
     ────────────────────────────────────────── */
-    .main-content {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 24px 48px;
-    }
     .section-block {
-      padding-top: 40px;
+      padding: 64px 0;
     }
     .section-header {
-      margin-bottom: 20px;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 12px;
+      margin-bottom: 32px;
+      border-bottom: 1px solid var(--separator);
+      padding-bottom: 16px;
     }
     .section-label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-muted);
-      font-weight: 700;
+      font-size: 13px;
+      line-height: 1.38;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--accent-blue);
       margin-bottom: 4px;
     }
     .section-title {
-      font-size: 1.6rem;
+      font-size: clamp(26px, 3.5vw, 34px);
+      line-height: 1.15;
       font-weight: 700;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
+      color: var(--label-primary);
     }
 
     /* ──────────────────────────────────────────
@@ -266,33 +337,61 @@
     .about-layout {
       display: grid;
       grid-template-columns: 1.6fr 1fr;
-      gap: 32px;
+      gap: 36px;
       align-items: start;
     }
-    .about-text p {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      line-height: 1.75;
-      margin-bottom: 16px;
+    @media (max-width: 820px) {
+      .about-layout { grid-template-columns: 1fr; }
     }
-    .about-text strong { color: var(--text-main); font-weight: 600; }
+    .about-text p {
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--label-secondary);
+      margin-bottom: 18px;
+    }
+    .about-text strong {
+      color: var(--label-primary);
+      font-weight: 600;
+    }
     
     .stats-container {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 12px;
+      gap: 14px;
+    }
+    @media (max-width: 820px) {
+      .stats-container { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 540px) {
+      .stats-container { grid-template-columns: 1fr; }
     }
     .stat-box {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-color);
+      background: var(--bg-elevated);
+      border: 1px solid var(--card-border);
       border-radius: var(--radius-md);
-      padding: 16px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       gap: 4px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+      transition: transform 0.25s var(--ease-apple), border-color 0.2s ease;
     }
-    .stat-number { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-    .stat-label { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; }
+    .stat-box:hover {
+      transform: translateY(-2px);
+      border-color: var(--card-border-hover);
+    }
+    .stat-number {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: var(--label-primary);
+    }
+    .stat-label {
+      font-size: 13px;
+      color: var(--label-secondary);
+      font-weight: 500;
+    }
 
     /* ──────────────────────────────────────────
        WORK / PROJECTS COMPONENT
@@ -300,40 +399,65 @@
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-      gap: 16px;
+      gap: 18px;
     }
     .project-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 24px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      position: relative;
+      justify-content: space-between;
+      gap: 14px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+      transition: transform 0.3s var(--ease-apple), box-shadow 0.3s var(--ease-apple), border-color 0.2s ease;
     }
-    .project-card:hover { border-color: var(--border-hover); }
-    .project-meta { display: flex; align-items: center; justify-content: space-between; }
+    .project-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--card-border-hover);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.04);
+    }
+    .project-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
     .project-tag {
-      font-size: 0.75rem;
+      font-size: 11px;
       font-weight: 600;
       padding: 4px 10px;
-      border-radius: var(--radius-sm);
-      background: var(--accent-tag-bg);
-      color: var(--accent-tag-text);
+      border-radius: var(--radius-pill);
+      background: rgba(0, 113, 227, 0.08);
+      color: var(--accent-blue);
       font-family: var(--font-mono);
+      letter-spacing: -0.01em;
     }
-    .project-title { font-size: 1.2rem; font-weight: 700; letter-spacing: -0.01em; }
-    .project-desc { font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; flex-grow: 1; }
-    .project-footer-link {
-      font-size: 0.88rem;
+    .project-title {
+      font-size: 19px;
       font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--label-primary);
+    }
+    .project-desc {
+      font-size: 14px;
+      color: var(--label-secondary);
+      line-height: 1.55;
+      flex-grow: 1;
+    }
+    .project-footer-link {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--accent-blue);
       display: inline-flex;
       align-items: center;
       gap: 4px;
       margin-top: 8px;
+      transition: gap 0.2s ease;
     }
-    .project-footer-link::after { content: " ↗"; }
+    .project-footer-link:hover {
+      gap: 7px;
+    }
 
     /* ──────────────────────────────────────────
        CERTIFICATIONS COMPONENT
@@ -341,174 +465,197 @@
     .certs-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-      gap: 12px;
+      gap: 14px;
     }
     .cert-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-color);
+      background: var(--bg-elevated);
+      border: 1px solid var(--card-border);
       border-radius: var(--radius-md);
-      padding: 20px;
+      padding: 22px;
       display: flex;
       flex-direction: column;
       gap: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+      transition: transform 0.25s var(--ease-apple), border-color 0.2s ease;
     }
-    .cert-card:hover { border-color: var(--border-hover); }
+    .cert-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--card-border-hover);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
+    }
     .cert-platform {
       display: inline-flex;
       align-items: center;
-      font-size: 0.72rem;
-      font-weight: 700;
+      font-size: 11px;
+      font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      color: var(--label-tertiary);
     }
-    .cert-title { font-size: 1rem; font-weight: 600; line-height: 1.4; flex-grow: 1; }
+    .cert-title {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      line-height: 1.4;
+      flex-grow: 1;
+      color: var(--label-primary);
+    }
+    .cert-title a:hover {
+      color: var(--accent-blue);
+    }
     .cert-meta-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-top: 6px;
-      font-size: 0.8rem;
+      font-size: 12px;
     }
-    .cert-date { font-family: var(--font-mono); color: var(--text-muted); }
+    .cert-date {
+      font-family: var(--font-mono);
+      color: var(--label-tertiary);
+    }
     .cert-badge {
       font-weight: 500;
-      padding: 2px 8px;
-      background: var(--bg-subtle);
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--border-color);
+      padding: 3px 8px;
+      background: var(--bg-secondary);
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--card-border);
+      color: var(--label-secondary);
+      font-size: 11px;
     }
-    .center-action-row { text-align: center; margin-top: 24px; }
+    .center-action-row {
+      text-align: center;
+      margin-top: 32px;
+    }
 
     /* ──────────────────────────────────────────
        CONTACT COMPONENT
     ────────────────────────────────────────── */
     .contact-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 14px;
     }
     .contact-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-color);
+      background: var(--bg-elevated);
+      border: 1px solid var(--card-border);
       border-radius: var(--radius-md);
-      padding: 16px;
+      padding: 16px 20px;
       display: flex;
       align-items: center;
       gap: 14px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+      transition: transform 0.2s var(--ease-apple), border-color 0.2s ease;
     }
-    .contact-card:hover { border-color: var(--border-hover); }
+    .contact-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--card-border-hover);
+    }
     .contact-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: var(--radius-sm);
-      background: var(--text-main);
-      color: var(--text-inverse);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg-secondary);
+      color: var(--label-primary);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+      border: 1px solid var(--card-border);
     }
     .contact-icon svg {
-      width: 20px;
-      height: 20px;
-      fill: currentColor;
-    }
-    .contact-details { min-width: 0; }
-    .contact-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); }
-    .contact-value { font-size: 0.88rem; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-
-    /* ──────────────────────────────────────────
-       FOOTER & UTILITIES
-    ────────────────────────────────────────── */
-    footer {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 32px 24px;
-      border-top: 1px solid var(--border-color);
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-    
-    .fab-top {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 46px;
-      height: 46px;
-      border-radius: var(--radius-md);
-      background: var(--accent);
-      color: var(--text-inverse);
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(8px);
-      transition: var(--transition);
-      z-index: 90;
-    }
-    .fab-top svg {
       width: 18px;
       height: 18px;
       fill: currentColor;
     }
-    .fab-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .contact-details {
+      min-width: 0;
+    }
+    .contact-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--label-tertiary);
+    }
+    .contact-value {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--label-primary);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
 
     /* ──────────────────────────────────────────
-       MEDIA QUERIES (RESPONSIVENESS)
+       FOOTER & FAB UTILITY
     ────────────────────────────────────────── */
-    @media (max-width: 820px) {
-      .about-layout { grid-template-columns: 1fr; gap: 24px; }
-      .stats-container { grid-template-columns: repeat(3, 1fr); }
+    footer {
+      border-top: 1px solid var(--separator);
+      text-align: center;
+      padding: 40px 24px 60px;
+      font-size: 12px;
+      color: var(--label-tertiary);
+      background: var(--bg-secondary);
     }
-    @media (max-width: 768px) {
-      .hero-layout {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 24px;
-      }
-      .hero-avatar-box {
-        width: 140px;
-        height: 140px;
-      }
+    
+    .fab-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--bg-elevated);
+      color: var(--label-primary);
+      border: 1px solid var(--card-border);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity 0.25s var(--ease-apple), transform 0.25s var(--ease-apple);
+      z-index: 90;
     }
-    @media (max-width: 640px) {
-      .nav-item:not(.nav-always) { display: none; }
-      .stats-container { grid-template-columns: 1fr; }
-      .hero-section { padding-top: 32px; }
+    .fab-top svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+    .fab-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
     }
   </style>
 </head>
 <body>
 
-  <!-- NAVIGATION BAR -->
-  <nav class="nav-container" id="navBar">
-    <div class="nav-content">
-      <span class="nav-brand">PK</span>
-      <div class="nav-links">
-        <a href="#" class="nav-item nav-always active">Home</a>
+  <!-- APPLE TRANSLUCENT NAVIGATION BAR -->
+  <header class="site-nav" id="navBar">
+    <div class="nav-inner">
+      <span class="nav-brand">Praveen Kumar</span>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="#" class="nav-item active">Home</a>
+        <a href="#about" class="nav-item">About</a>
         <a href="#projects" class="nav-item">Projects</a>
-        <a href="#certifications" class="nav-item">Certs</a>
+        <a href="#certifications" class="nav-item">Certifications</a>
         <a href="#contact" class="nav-item">Contact</a>
-      </div>
+      </nav>
+      <a class="nav-cta" href="https://drive.google.com/file/d/10btlf2FkzuD_DMYsLyxnuUereCLa-OIK/view?usp=sharing" target="_blank">Resume</a>
     </div>
-  </nav>
+  </header>
 
   <!-- HERO PROFILE -->
   <header class="hero-section">
-    <div class="hero-layout">
-      <div class="hero-avatar-box">
-        <img src="./profile.jpg" alt="Praveen Kumar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <span class="avatar-initials" style="display:none">PK</span>
-      </div>
+    <div class="wrap hero-layout">
       <div class="hero-text">
+        <span class="hero-eyebrow">Senior Backend &amp; GenAI Engineer</span>
         <h1 class="hero-name">Praveen Kumar</h1>
-        <p class="hero-tagline">Senior Backend &amp; GenAI Engineer | Ex-Lead at Matrimony.com | Scaling Distributed Systems &amp; Production-Grade Agentic AI Workflows</p>
+        <p class="hero-tagline">Ex-Lead at Matrimony.com Limited. Architecting high-traffic distributed backends and production-grade agentic AI systems.</p>
         <div class="hero-tags">
           <span class="hero-chip">
             <svg class="icon-svg" viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"/></svg>
@@ -532,21 +679,26 @@
           </span>
         </div>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="https://drive.google.com/file/d/10btlf2FkzuD_DMYsLyxnuUereCLa-OIK/view?usp=sharing" target="_blank">Request Resume</a>
-          <a class="btn btn-secondary" href="#contact">Get in touch</a>
+          <a class="btn btn-primary" href="https://drive.google.com/file/d/10btlf2FkzuD_DMYsLyxnuUereCLa-OIK/view?usp=sharing" target="_blank">View Resume</a>
+          <a class="btn btn-secondary" href="#contact">Get in Touch</a>
         </div>
+      </div>
+
+      <div class="hero-avatar-box">
+        <img src="./profile.jpg" alt="Praveen Kumar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <span class="avatar-initials" style="display:none">PK</span>
       </div>
     </div>
   </header>
 
-  <!-- PORTFOLIO SECTIONS -->
-  <main class="main-content">
+  <!-- MAIN PORTFOLIO CONTENT -->
+  <main class="wrap">
 
     <!-- ABOUT SECTION -->
     <section class="section-block" id="about">
       <div class="section-header">
         <div class="section-label">Overview</div>
-        <h2 class="section-title">About Me</h2>
+        <h2 class="section-title">Background &amp; Expertise</h2>
       </div>
       <div class="about-layout">
         <div class="about-text">
@@ -560,11 +712,11 @@
         <div class="stats-container">
           <div class="stat-box">
             <span class="stat-number">12+</span>
-            <span class="stat-label">Years Experience</span>
+            <span class="stat-label">Years Industry Experience</span>
           </div>
           <div class="stat-box">
             <span class="stat-number">5</span>
-            <span class="stat-label">Years Tech Leadership</span>
+            <span class="stat-label">Years Technical Leadership</span>
           </div>
           <div class="stat-box">
             <span class="stat-number">20+</span>
@@ -577,7 +729,7 @@
     <!-- PROJECTS SECTION -->
     <section class="section-block" id="projects">
       <div class="section-header">
-        <div class="section-label">Work</div>
+        <div class="section-label">Selected Works</div>
         <h2 class="section-title">Featured Projects</h2>
       </div>
       <div class="projects-grid">
@@ -587,7 +739,7 @@
           <div class="project-meta"><span class="project-tag">LangGraph · MCP · FastAPI</span></div>
           <h3 class="project-title">Agentic RAG Assistant</h3>
           <p class="project-desc">Branching retrieve-decide-tool-call-generate-guardrail workflow backed by a Chroma vector store. Features an MCP stdio server for external calculation/web search, inspectable guardrails, and automated evaluation harnesses.</p>
-          <a class="project-footer-link" href="https://github.com/praveenkhumar/agentic-rag-assistant" target="_blank">GitHub</a>
+          <a class="project-footer-link" href="https://github.com/praveenkhumar/agentic-rag-assistant" target="_blank">GitHub Repository <span>→</span></a>
         </div>
 
         <!-- Multi-Agent Task System -->
@@ -595,64 +747,71 @@
           <div class="project-meta"><span class="project-tag">CrewAI · Multi-Agent</span></div>
           <h3 class="project-title">Multi-Agent Task System</h3>
           <p class="project-desc">CrewAI research-to-report pipeline coordinating Researcher, Writer, and Reviewer agents with Tavily live search. Features a bounded reject-and-revise workflow with structured handoff tracing and deterministic evaluation.</p>
-          <a class="project-footer-link" href="https://github.com/praveenkhumar/multi-agent-task-system" target="_blank">GitHub</a>
+          <a class="project-footer-link" href="https://github.com/praveenkhumar/multi-agent-task-system" target="_blank">GitHub Repository <span>→</span></a>
         </div>
 
-        <!-- Original Projects -->
+        <!-- AI Image Detector -->
         <div class="project-card">
           <div class="project-meta"><span class="project-tag">ML · Computer Vision</span></div>
           <h3 class="project-title">AI Image Detector</h3>
-          <p class="project-desc">Detects whether an image is AI-generated or real using CLIP-based classification. Supports image upload &amp; URL input.</p>
-          <a class="project-footer-link" href="https://praveen-ai-image-detector.streamlit.app/" target="_blank">Live demo</a>
+          <p class="project-desc">Detects whether an image is AI-generated or real using CLIP-based classification models. Supports direct image upload &amp; URL ingestion.</p>
+          <a class="project-footer-link" href="https://praveen-ai-image-detector.streamlit.app/" target="_blank">Live Demo <span>→</span></a>
         </div>
 
+        <!-- AI Resume & Job Matcher -->
         <div class="project-card">
-          <div class="project-meta"><span class="project-tag">NLP · ML</span></div>
+          <div class="project-meta"><span class="project-tag">NLP · Machine Learning</span></div>
           <h3 class="project-title">AI Resume &amp; Job Matcher</h3>
-          <p class="project-desc">Extracts skills from resumes and compares with job descriptions to generate a match score and skill gap insights.</p>
-          <a class="project-footer-link" href="https://praveen-ai-resume-job-matcher.streamlit.app/" target="_blank">Live demo</a>
+          <p class="project-desc">Extracts skills from candidate resumes and benchmarks against job descriptions to produce match indices and semantic skill gap analytics.</p>
+          <a class="project-footer-link" href="https://praveen-ai-resume-job-matcher.streamlit.app/" target="_blank">Live Demo <span>→</span></a>
         </div>
 
+        <!-- Exam Score Predictor -->
         <div class="project-card">
           <div class="project-meta"><span class="project-tag">ML · Regression</span></div>
           <h3 class="project-title">Exam Score Predictor</h3>
-          <p class="project-desc">Linear Regression model with EDA, visualizations, and real-time score prediction for students.</p>
-          <a class="project-footer-link" href="https://colab.research.google.com/drive/1a6HtPd67PKMBwSGlITVa7pdWbxAAxOrU?usp=sharing" target="_blank">View notebook</a>
+          <p class="project-desc">Supervised Linear Regression pipeline with exploratory data analysis, visual correlation matrices, and real-time inference prediction.</p>
+          <a class="project-footer-link" href="https://colab.research.google.com/drive/1a6HtPd67PKMBwSGlITVa7pdWbxAAxOrU?usp=sharing" target="_blank">Colab Notebook <span>→</span></a>
         </div>
 
+        <!-- Customer Segmentation -->
         <div class="project-card">
           <div class="project-meta"><span class="project-tag">ML · Clustering</span></div>
           <h3 class="project-title">Customer Segmentation</h3>
-          <p class="project-desc">Unsupervised K-Means clustering of customers by income and spending patterns.</p>
-          <a class="project-footer-link" href="https://colab.research.google.com/drive/1Wq03YcimcqDIUOUdO6DKGWjzJwXyaW28?usp=sharing" target="_blank">View notebook</a>
+          <p class="project-desc">Unsupervised K-Means clustering algorithm segmenting user cohorts based on income distributions, feature weights, and spending velocities.</p>
+          <a class="project-footer-link" href="https://colab.research.google.com/drive/1Wq03YcimcqDIUOUdO6DKGWjzJwXyaW28?usp=sharing" target="_blank">Colab Notebook <span>→</span></a>
         </div>
 
+        <!-- Loan Approval Classifier -->
         <div class="project-card">
           <div class="project-meta"><span class="project-tag">ML · Classification</span></div>
           <h3 class="project-title">Loan Approval Classifier</h3>
-          <p class="project-desc">Binary classification model predicting loan approval using Logistic Regression and evaluation metrics.</p>
-          <a class="project-footer-link" href="https://colab.research.google.com/drive/1byEOaVw-z1PZUqnKo5bhoMTgLMK-DiGM?usp=sharing" target="_blank">View notebook</a>
+          <p class="project-desc">Binary classification pipeline evaluating loan risk using Logistic Regression, feature scaling, and extensive performance evaluations.</p>
+          <a class="project-footer-link" href="https://colab.research.google.com/drive/1byEOaVw-z1PZUqnKo5bhoMTgLMK-DiGM?usp=sharing" target="_blank">Colab Notebook <span>→</span></a>
         </div>
 
+        <!-- Task Management System -->
         <div class="project-card">
           <div class="project-meta"><span class="project-tag">Django · REST API</span></div>
           <h3 class="project-title">Task Management System</h3>
-          <p class="project-desc">Full-featured task manager with user authentication, CRUD, filters, and REST API built in Django.</p>
-          <a class="project-footer-link" href="https://github.com/praveenkhumar/task_management_system" target="_blank">GitHub</a>
+          <p class="project-desc">Modular backend architecture with user authentication, comprehensive CRUD workflows, query filters, and clean RESTful API contracts.</p>
+          <a class="project-footer-link" href="https://github.com/praveenkhumar/task_management_system" target="_blank">GitHub Repository <span>→</span></a>
         </div>
 
+        <!-- URL Shortener -->
         <div class="project-card">
-          <div class="project-meta"><span class="project-tag">Flask · API</span></div>
+          <div class="project-meta"><span class="project-tag">Flask · Micro-API</span></div>
           <h3 class="project-title">URL Shortener</h3>
-          <p class="project-desc">Short link generation, redirect handling, and API endpoints built with Flask.</p>
-          <a class="project-footer-link" href="https://github.com/praveenkhumar/url-shortener" target="_blank">GitHub</a>
+          <p class="project-desc">Lightweight microservice providing deterministic token encoding, redirect orchestration, and API endpoints constructed with Flask.</p>
+          <a class="project-footer-link" href="https://github.com/praveenkhumar/url-shortener" target="_blank">GitHub Repository <span>→</span></a>
         </div>
 
+        <!-- Weather API -->
         <div class="project-card">
           <div class="project-meta"><span class="project-tag">FastAPI · REST</span></div>
           <h3 class="project-title">Weather API</h3>
-          <p class="project-desc">REST API with Pydantic validation and auto-generated Swagger UI documentation, built with FastAPI.</p>
-          <a class="project-footer-link" href="https://github.com/praveenkhumar/fastapi-weather-project" target="_blank">GitHub</a>
+          <p class="project-desc">FastAPI microservice featuring Pydantic request/response validation, asynchronous dispatch, and auto-generated OpenAPI documentation.</p>
+          <a class="project-footer-link" href="https://github.com/praveenkhumar/fastapi-weather-project" target="_blank">GitHub Repository <span>→</span></a>
         </div>
 
       </div>
@@ -661,8 +820,8 @@
     <!-- CERTIFICATIONS SECTION -->
     <section class="section-block" id="certifications">
       <div class="section-header">
-        <div class="section-label">Learning</div>
-        <h2 class="section-title">Certifications</h2>
+        <div class="section-label">Continuous Learning</div>
+        <h2 class="section-title">Certifications &amp; Credentials</h2>
       </div>
       <div class="certs-grid">
 
@@ -740,7 +899,7 @@
 
       </div>
       <div class="center-action-row">
-        <a class="btn btn-secondary" href="./certificates.html">See full list →</a>
+        <a class="btn btn-secondary" href="./certificates.html">View All Certifications →</a>
       </div>
     </section>
 
@@ -800,15 +959,17 @@
 
   </main>
 
-  <!-- BACK TO TOP BUTTON -->
-  <button class="fab-top" id="fabTop" aria-label="Go to top" title="Go to top">
+  <!-- BACK TO TOP FAB BUTTON -->
+  <button class="fab-top" id="fabTop" aria-label="Scroll to top" title="Scroll to top">
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/>
     </svg>
   </button>
 
   <footer>
-    © 2026 Praveen Kumar · Chennai, India · Designed for Performance
+    <div class="wrap">
+      © 2026 Praveen Kumar · Chennai, India · Built for Precision and Performance
+    </div>
   </footer>
 
   <script>

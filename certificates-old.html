@@ -1,0 +1,849 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-08RGRW0GMS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-08RGRW0GMS');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Certifications | Praveen Kumar</title>
+
+  <!-- Social Media & Open Graph Meta Tags -->
+  <meta name="description" content="Explore the professional certifications directory of Praveen Kumar, featuring credentials in Cloud Architecture, GenAI, Machine Learning, and Backend Engineering." />
+  
+  <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Certifications Directory | Praveen Kumar" />
+  <meta property="og:description" content="Explore the professional certifications directory of Praveen Kumar, featuring credentials in Cloud Architecture, GenAI, Machine Learning, and Backend Engineering." />
+  <meta property="og:url" content="https://praveenkhumar.github.io/certs" />
+  <meta property="og:image" content="https://praveenkhumar.github.io/profile.jpg" />
+  <meta property="og:site_name" content="Praveen Kumar Portfolio" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Certifications Directory | Praveen Kumar" />
+  <meta name="twitter:description" content="Explore the professional certifications directory of Praveen Kumar, featuring credentials in Cloud Architecture, GenAI, Machine Learning, and Backend Engineering." />
+  <meta name="twitter:image" content="https://praveenkhumar.github.io/profile.jpg" />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23111111'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='system-ui%2Csans-serif' font-size='22' font-weight='700' fill='%23ffffff'%3EPK%3C/text%3E%3C/svg%3E">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ──────────────────────────────────────────
+       DESIGN TOKEN SYSTEM & VARIABLES (LIGHT MONOCHROME)
+    ────────────────────────────────────────── */
+    :root {
+      --bg-main: #fcfcfc;
+      --bg-surface: #ffffff;
+      --bg-subtle: #f4f4f6;
+      --bg-nav: rgba(252, 252, 252, 0.8);
+      
+      --text-main: #111111;
+      --text-muted: #55555c;
+      --text-inverse: #ffffff;
+      
+      --border-color: #e4e4e7;
+      --border-hover: #111111;
+      
+      --accent: #111111;
+      --accent-muted: #ececec;
+      --accent-tag-bg: #f0f0f3;
+      --accent-tag-text: #3f3f46;
+      
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+      
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      
+      --max-width: 1040px;
+      --transition: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* ──────────────────────────────────────────
+       RESET & GLOBAL BASE STYLES
+    ────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; transition: var(--transition); }
+
+    /* Global SVG Icon Styling */
+    .icon-svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+
+    /* ──────────────────────────────────────────
+       NAVIGATION BAR
+    ────────────────────────────────────────── */
+    .nav-container {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-nav);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .nav-content {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-item {
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+    .nav-item:hover, .nav-item.active {
+      color: var(--text-main);
+      background: var(--bg-subtle);
+    }
+
+    /* ──────────────────────────────────────────
+       HERO COMPONENT (COMPACT FOR ARCHIVE PAGE)
+    ────────────────────────────────────────── */
+    .hero-section {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 40px 24px 20px;
+    }
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .back-link {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    .back-link:hover {
+      color: var(--text-main);
+    }
+    .hero-name {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+    }
+    .hero-tagline {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 400;
+      color: var(--text-muted);
+      letter-spacing: -0.02em;
+      line-height: 1.4;
+    }
+
+    /* ──────────────────────────────────────────
+       SEARCH & FILTER BAR
+    ────────────────────────────────────────── */
+    .filter-section {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .search-wrapper {
+      position: relative;
+      width: 100%;
+    }
+    .search-input {
+      width: 100%;
+      padding: 12px 16px 12px 40px;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      color: var(--text-main);
+      transition: var(--transition);
+      outline: none;
+    }
+    .search-input:focus {
+      border-color: var(--border-hover);
+    }
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+    .filter-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .filter-btn {
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      transition: var(--transition);
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--accent);
+      color: var(--text-inverse);
+      border-color: var(--accent);
+    }
+
+    /* ──────────────────────────────────────────
+       STATS ROW
+    ────────────────────────────────────────── */
+    .stats-section {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 16px 24px;
+    }
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .stat-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      text-align: center;
+    }
+    .stat-num {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-main);
+      font-family: var(--font-mono);
+    }
+    .stat-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* ──────────────────────────────────────────
+       MAIN PAGE GRID
+    ────────────────────────────────────────── */
+    .main-content {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px 48px;
+    }
+    .category-group {
+      margin-bottom: 40px;
+    }
+    .category-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: -0.02em;
+    }
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 16px;
+    }
+    .cert-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: var(--transition);
+    }
+    .cert-card:hover { 
+      border-color: var(--border-hover); 
+    }
+    .cert-platform {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+    .cert-title { 
+      font-size: 1rem; 
+      font-weight: 700; 
+      line-height: 1.4; 
+      flex-grow: 1; 
+    }
+    .cert-title a:hover {
+      text-decoration: underline;
+    }
+    .cert-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 6px;
+      font-size: 0.8rem;
+    }
+    .cert-date { 
+      font-family: var(--font-mono); 
+      color: var(--text-muted); 
+    }
+    .cert-badge {
+      font-weight: 500;
+      padding: 4px 10px;
+      background: var(--bg-subtle);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      font-size: 0.75rem;
+    }
+
+    /* ──────────────────────────────────────────
+       FOOTER & UTILITIES
+    ────────────────────────────────────────── */
+    footer {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 32px 24px;
+      border-top: 1px solid var(--border-color);
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    
+    .fab-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 46px;
+      height: 46px;
+      border-radius: var(--radius-md);
+      background: var(--accent);
+      color: var(--text-inverse);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: var(--transition);
+      z-index: 90;
+    }
+    .fab-top svg {
+      width: 20px;
+      height: 20px;
+      display: block;
+      fill: #ffffff;
+    }
+    .fab-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+
+    /* ──────────────────────────────────────────
+       MEDIA QUERIES (RESPONSIVENESS)
+    ────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .nav-item:not(.nav-always) { display: none; }
+      .hero-section { padding-top: 32px; }
+      .filter-section { gap: 12px; }
+      .stats-row { grid-template-columns: 1fr; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="nav-container" id="navBar">
+    <div class="nav-content">
+      <span class="nav-brand">PK</span>
+      <div class="nav-links">
+        <a href="./index.html" class="nav-item nav-always">Home</a>
+        <a href="./index.html#projects" class="nav-item">Projects</a>
+        <a href="#" class="nav-item active">Certs</a>
+        <a href="./index.html#contact" class="nav-item">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- COMPACT HERO AREA -->
+  <header class="hero-section">
+    <div class="hero-text">
+      <a href="./index.html" class="back-link">
+        <svg class="icon-svg" viewBox="0 0 24 24" style="margin-right: 2px;"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+        Back to Portfolio
+      </a>
+      <h1 class="hero-name">Certifications Directory</h1>
+      <p class="hero-tagline">My continuous learning journey across Cloud, Architecture, Machine Learning, and Backend engineering.</p>
+    </div>
+  </header>
+
+  <!-- STATS -->
+  <section class="stats-section">
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-num">27</div>
+        <div class="stat-desc">Total Certifications</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">6</div>
+        <div class="stat-desc">Core Categories</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">2026</div>
+        <div class="stat-desc">Most Recent Earned</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEARCH & FILTER SYSTEM -->
+  <section class="filter-section">
+    <div class="search-wrapper">
+      <svg class="icon-svg search-icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+      <input type="text" id="searchInput" class="search-input" placeholder="Search certifications, platforms, or skills...">
+    </div>
+    <div class="filter-chips">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="python-dev">Python Development</button>
+      <button class="filter-btn" data-filter="ai-ml">Machine Learning &amp; AI</button>
+      <button class="filter-btn" data-filter="gen-ai">GenAI &amp; Prompt Engineering</button>
+      <button class="filter-btn" data-filter="devops-cloud">DevOps &amp; Cloud</button>
+      <button class="filter-btn" data-filter="web-frameworks">Web Dev &amp; Frameworks</button>
+      <button class="filter-btn" data-filter="management">Project Management</button>
+    </div>
+  </section>
+
+  <!-- ALL CERTIFICATIONS CONTAINER -->
+  <main class="main-content">
+
+    <!-- Python Development Category -->
+    <div class="category-group" data-group-category="python-dev">
+      <h2 class="category-title">Python Development</h2>
+      <div class="certs-grid">
+        <div class="cert-card" data-category="python-dev">
+          <span class="cert-platform">GUVI</span>
+          <h3 class="cert-title">
+            <a href="https://www.guvi.in/share-certificate/m2173u0B3126167GSi" target="_blank">Python Programming</a>
+          </h3>
+          <div class="cert-meta-row">
+            <span class="cert-date">Nov 2025</span>
+            <span class="cert-badge">Python</span>
+          </div>
+        </div>
+        <div class="cert-card" data-category="python-dev">
+          <span class="cert-platform">TutorialsPoint</span>
+          <h3 class="cert-title">
+            <a href="https://www.tutorialspoint.com/market/certificate.jsp/TP-DC4NQ941?v=1742449060" target="_blank">Python Web Dev Pro: Flask, Django, HTML, CSS &amp; Bootstrap</a>
+          </h3>
+          <div class="cert-meta-row">
+            <span class="cert-date">Mar 2025</span>
+            <span class="cert-badge">Web Dev</span>
+          </div>
+        </div>
+        <div class="cert-card" data-category="python-dev">
+          <span class="cert-platform">TutorialsPoint</span>
+          <h3 class="cert-title">
+            <a href="https://www.tutorialspoint.com/market/certificate.jsp/TP-69U2JECU?v=1742455390" target="_blank">API Development with FastAPI + MySQL in Python</a>
+          </h3>
+          <div class="cert-meta-row">
+            <span class="cert-date">Mar 2025</span>
+            <span class="cert-badge">FastAPI</span>
+          </div>
+        </div>
+        <div class="cert-card" data-category="python-dev">
+          <span class="cert-platform">Udemy</span>
+          <h3 class="cert-title">
+            <a href="https://www.udemy.com/certificate/UC-1993460d-f971-4964-b2ec-6dc29fb17baf/" target="_blank">The Complete Python Bootcamp: Zero to Hero</a>
+          </h3>
+          <div class="cert-meta-row">
+            <span class="cert-date">Jan 2025</span>
+            <span class="cert-badge">Core Python</span>
+          </div>
+        </div>
+        <div class="cert-card" data-category="python-dev">
+          <span class="cert-platform">TutorialsPoint</span>
+          <h3 class="cert-title">
+            <a href="https://www.tutorialspoint.com/market/certificate.jsp/TP-EJTDGKCQ?v=1729756692" target="_blank">Practical Machine Learning Using Python</a>
+          </h3>
+          <div class="cert-meta-row">
+            <span class="cert-date">Oct 2024</span>
+            <span class="cert-badge">Machine Learning</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Machine Learning & AI Category -->
+    <div class="category-group" data-group-category="ai-ml">
+      <h2 class="category-title">Machine Learning &amp; AI</h2>
+      <div class="certs-grid">
+        <div class="cert-card" data-category="ai-ml">
+          <span class="cert-platform">Udemy</span>
+          <h3 class="cert-title">
+            <a href="https://www.udemy.com/certificate/UC-488a9cd3-8d14-46d2-802c-818ff134e5f2/" target="_blank">Machine Learning, Data Science &amp; AI Engineering with Python</a>
+          </h3>
+          <div class="cert-meta-row">
+            <span class="cert-date">Apr 2025</span>
+            <span class="cert-badge">Data Science</span>
+          </div>
+        </div>
+        <div class="cert-card" data-category="ai-ml">
+          <span class="cert-platform">Great Learning</span>
+          <h3 class="cert-title">
+            <a href="https://www.mygreatlearning.com/certificate/KPXBWHFN" target="_blank">Artificial Intelligence and Machine Learning Projects</a>
+          </h3>
+          <div class="cert-meta-row">
+            <span class="cert-date">May 2025</span>
+            <span class="cert-badge">AI/ML Projects</span>
+          </div>
+        </div>
+        <div class="cert-card" data-category="ai-ml">
+          <span class="cert-platform">Great Learning</span>
+          <h3 class="cert-title">
+            <a href="https://www.mygreatlearning.com/certificate/RUBNUECX" target="_blank">Artificial Intelligence Projects</a>
+          </h3>
+          <div class="cert-meta-row">
+            <span class="cert-date">May 2025</span>
+            <span class="cert-badge">AI Projects</span>
+          </div>
+        </div>
+        <div class="cert-card" data-category="ai-ml">
+          <span class="cert-platform">Great Learning</span>
+          <h3 class="cert-title">
+            <a href="https://www.mygreatlearning.com/certificate/JARACYOB" target="_blank">MLOps Fundamentals</a>
+          </h3>
+          <div class="cert-meta-row">
+            <span class="cert-date">May 2025</span>
+            <span class="cert-badge">MLOps</span>
+          </div>
+        </div>
+        <div class="cert-card" data-category="ai-ml">
+          <span class="cert-platform">Great Learning</span>
+          <h3 class="cert-title">
+            <a href="https://www.mygreatlearning.com/certificate/LKVPJASI" target="_blank">Robotics and AI</a>
+          </h3>
+          <div class="cert-meta-row">
+            <span class="cert-date">May 2025</span>
+            <span class="cert-badge">Robotics</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Generative AI & Prompt Engineering Category -->
+    <div class="category-group" data-group-category="gen-ai">
+      <h2 class="category-title">Generative AI &amp; Prompt Engineering</h2>
+      <div class="certs-grid">
+        <div class="cert-card" data-category="gen-ai">
+          <span class="cert-platform">Udemy</span>
+          <h3 class="cert-title">
+            <a href="https://www.udemy.com/certificate/UC-fe31fa56-6955-4a2b-89a4-3ec9aaa01118/" target="_blank">AI Engineer Core Track: LLM Engineering, RAG, QLoRA, Agents</a>
+          </h3>
+          <div class="cert-meta-row">
+            <span class="cert-date">Sep 2025</span>
+            <span class="cert-badge">LLM &amp; Agents</span>
+          </div>
+        </div>
+        <div class="cert-card" data-category="gen-ai">
+          <span class="cert-platform">GUVI</span>
+          <h3 class="cert-title">
+            <a href="https://www.guvi.in/share-certificate/6923K1167f6He16rdN" target="_blank">Generative AI</a>
+          </h3>
+          <div class="cert-meta-row">
+            <span class="cert-date">Nov 2025</span>
+            <span class="cert-badge">Generative AI</span>
+          </div>
+        </div>
+        <div class="cert-card" data-category="gen-ai">
+          <span class="cert-platform">KnowledgeHut</span>
+          <h3 class="cert-title">
+            <a href="https://certificates.knowledgehut.com/bdb4b0b4-55da-4435-9408-61357b15d044-Gen-AI-UG-12345-20250426003.jpeg" target="_blank">Generative AI Foundations Certificate Program</a>
+          </h3>
+          <div class="cert-meta-row">
+            <span class="cert-date">Apr 2025</span>
+            <span class="cert-badge">AI Foundations</span>
+          </div>
+        </div>
+        <div class="cert-card" data-category="gen-ai">
+          <span class="cert-platform">Great Learning</span>
+          <h3 class="cert-title">
+            <a href="https://www.mygreatlearning.com/certificate/RGBXJNJI" target="_blank">Prompt Engineering for ChatGPT</a>
+          </h3>
+          <div class="cert-meta-row">
+            <span class="cert-date">May 2025</span>
+            <span class="cert-badge">Prompt Eng.</span>
+          </div>
+        </div>
+        <div class="cert-card" data-category="gen-ai">
+          <span class="cert-platform">Great Learning</span>
+          <h3 class="cert-title">
+            <a href="https://www.mygreatlearning.com/certificate/DHZLACLV" target="_blank">ChatGPT for Coders</a>
+          </h3>
+          <div class="cert-meta-row">
+            <span class="cert-date">May 2025</span>
+            <span class="cert-badge">Coding Assistant</span>
+          </div>
+        </div>
+        <div class="cert-card" data-category="gen-ai">
+          <span class="cert-platform">Great Learning</span>
+          <h3 class="cert-title">
+            <a href="https://www.mygreatlearning.com/certificate/NYLBQIIN" target="_blank">Generative AI for Beginners</a>
+          </h3>
+          <div class="cert-meta-row">
+            <span class="cert-date">May 2025</span>
+            <span class="cert-badge">Generative AI</span>
+          </div>
+        </div>
+        <div class="cert-card" data-category="gen-ai">
+          <span class="cert-platform">TutorialsPoint</span>
+          <h3 class="cert-title">
+            <a href="https://www.tutorialspoint.com/market/certificate.jsp/TP-A2OC621E?v=1728481036" target="_blank">ChatGPT Masterclass: Navigating AI and Prompt Engineering</a>
+          </h3>
+          <div class="cert-meta-row">
+            <span class="cert-date">Oct 2024</span>
+            <span class="cert-badge">AI Masterclass</span>
+          </div>
+        </div>
+        <div class="cert-card" data-category="gen-ai">
+          <span class="cert-platform">TutorialsPoint</span>
+          <h3 class="cert-title">
+            <a href="https://www.tutorialspoint.com/market/certificate.jsp/TP-GL7RCHIN?v=1728289331" target="_blank">Building an AI ChatBot with OpenAI and Node.js</a>
+          </h3>
+          <div class="cert-meta-row">
+            <span class="cert-date">Oct 2024</span>
+            <span class="cert-badge">Chatbot Dev</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DevOps & Cloud Category -->
+    <div class="category-group" data-group-category="devops-cloud">
+      <h2 class="category-title">DevOps &amp; Cloud</h2>
+      <div class="certs-grid">
+        <div class="cert-card" data-category="devops-cloud">
+          <span class="cert-platform">Udemy</span>
+          <h3 class="cert-title">
+            <a href="https://www.udemy.com/certificate/UC-f78b0168-d9ed-4649-a32b-ca6a7dc3e1c7/" target="_blank">AWS Certified Solutions Architect Associate</a>
+          </h3>
+          <div class="cert-meta-row">
+            <span class="cert-date">Feb 2026</span>
+            <span class="cert-badge">AWS SAA</span>
+          </div>
+        </div>
+        <div class="cert-card" data-category="devops-cloud">
+          <span class="cert-platform">Udemy</span>
+          <h3 class="cert-title">
+            <a href="https://www.udemy.com/certificate/UC-2a636d99-6ba5-4722-938e-b1a04ac0f7d2/" target="_blank">Microsoft Azure – The Complete Guide</a>
+          </h3>
+          <div class="cert-meta-row">
+            <span class="cert-date">Jan 2026</span>
+            <span class="cert-badge">Azure Architect</span>
+          </div>
+        </div>
+        <div class="cert-card" data-category="devops-cloud">
+          <span class="cert-platform">Udemy</span>
+          <h3 class="cert-title">
+            <a href="https://www.udemy.com/certificate/UC-54f1661a-46a9-4ad3-b815-0d0fbf095ce5/" target="_blank">Decoding DevOps – Basics to Advanced Projects with AI</a>
+          </h3>
+          <div class="cert-meta-row">
+            <span class="cert-date">May 2025</span>
+            <span class="cert-badge">DevOps &amp; AI</span>
+          </div>
+        </div>
+        <div class="cert-card" data-category="devops-cloud">
+          <span class="cert-platform">Udemy</span>
+          <h3 class="cert-title">
+            <a href="https://www.udemy.com/certificate/UC-304f2d18-24d3-451a-8eff-d4612a2ce1f2/" target="_blank">GitHub Actions – The Complete Guide</a>
+          </h3>
+          <div class="cert-meta-row">
+            <span class="cert-date">Jan 2025</span>
+            <span class="cert-badge">CI/CD</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Web Development & Frameworks Category -->
+    <div class="category-group" data-group-category="web-frameworks">
+      <h2 class="category-title">Web Development &amp; Frameworks</h2>
+      <div class="certs-grid">
+        <div class="cert-card" data-category="web-frameworks">
+          <span class="cert-platform">Udemy</span>
+          <h3 class="cert-title">
+            <a href="https://www.udemy.com/certificate/UC-6c343468-8f67-413d-ab64-d4438b0ae4fd/" target="_blank">NodeJS – The Complete Guide (MVC, REST APIs, GraphQL, Deno)</a>
+          </h3>
+          <div class="cert-meta-row">
+            <span class="cert-date">Nov 2024</span>
+            <span class="cert-badge">Node.js</span>
+          </div>
+        </div>
+        <div class="cert-card" data-category="web-frameworks">
+          <span class="cert-platform">Udemy</span>
+          <h3 class="cert-title">
+            <a href="https://www.udemy.com/certificate/UC-e05a7b0e-2d07-43b3-ac43-a962dd10a33e/" target="_blank">Laravel – For Beginner to Advanced</a>
+          </h3>
+          <div class="cert-meta-row">
+            <span class="cert-date">Nov 2024</span>
+            <span class="cert-badge">Laravel</span>
+          </div>
+        </div>
+        <div class="cert-card" data-category="web-frameworks">
+          <span class="cert-platform">Udemy</span>
+          <h3 class="cert-title">
+            <a href="https://www.udemy.com/certificate/UC-9518de39-4bde-491b-a383-f4e24b6a4f83/" target="_blank">CodeIgniter – The Complete Guide</a>
+          </h3>
+          <div class="cert-meta-row">
+            <span class="cert-date">Sep 2025</span>
+            <span class="cert-badge">CodeIgniter</span>
+          </div>
+        </div>
+        <div class="cert-card" data-category="web-frameworks">
+          <span class="cert-platform">Udemy</span>
+          <h3 class="cert-title">
+            <a href="https://www.udemy.com/certificate/UC-f6edb299-ee53-4eb6-9976-70f6974ab812/" target="_blank">Symfony – The Complete Guide</a>
+          </h3>
+          <div class="cert-meta-row">
+            <span class="cert-date">Dec 2025</span>
+            <span class="cert-badge">Symfony</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project & Team Management Category -->
+    <div class="category-group" data-group-category="management">
+      <h2 class="category-title">Project &amp; Team Management</h2>
+      <div class="certs-grid">
+        <div class="cert-card" data-category="management">
+          <span class="cert-platform">Udemy</span>
+          <h3 class="cert-title">
+            <a href="https://www.udemy.com/certificate/UC-91721051-c457-41ee-89d3-15bd2883b534/" target="_blank">Agile Project Management (AgilePM) Certification Masterclass</a>
+          </h3>
+          <div class="cert-meta-row">
+            <span class="cert-date">Mar 2025</span>
+            <span class="cert-badge">Agile</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- BACK TO TOP BUTTON -->
+  <button class="fab-top" id="fabTop" aria-label="Go to top" title="Go to top">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/>
+    </svg>
+  </button>
+
+  <footer>
+    © 2026 Praveen Kumar · Chennai, India · Designed for Performance
+  </footer>
+
+  <script>
+    // Search and Filter Functionality
+    const searchInput = document.getElementById('searchInput');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const certCards = document.querySelectorAll('.cert-card');
+    const categoryGroups = document.querySelectorAll('.category-group');
+
+    function filterCertifications() {
+      const searchTerm = searchInput.value.toLowerCase().trim();
+      const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+
+      categoryGroups.forEach(group => {
+        const groupCategory = group.getAttribute('data-group-category');
+        let visibleCardsInGroup = 0;
+
+        const cards = group.querySelectorAll('.cert-card');
+        cards.forEach(card => {
+          const title = card.querySelector('.cert-title').textContent.toLowerCase();
+          const platform = card.querySelector('.cert-platform').textContent.toLowerCase();
+          const category = card.getAttribute('data-category');
+
+          const matchesSearch = title.includes(searchTerm) || platform.includes(searchTerm);
+          const matchesFilter = activeFilter === 'all' || category === activeFilter;
+
+          if (matchesSearch && matchesFilter) {
+            card.style.display = 'flex';
+            visibleCardsInGroup++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        if (visibleCardsInGroup > 0) {
+          group.style.display = 'block';
+        } else {
+          group.style.display = 'none';
+        }
+      });
+    }
+
+    searchInput.addEventListener('input', filterCertifications);
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filterCertifications();
+      });
+    });
+
+    // Back to top behavior
+    const fabTop = document.getElementById('fabTop');
+    window.addEventListener('scroll', () => {
+      fabTop.classList.toggle('visible', window.scrollY > 300);
+    });
+    fabTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+</body>
+</html>

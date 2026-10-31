@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-08RGRW0GMS"></script>
@@ -10,7 +10,7 @@
     gtag('config', 'G-08RGRW0GMS');
   </script>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Certifications | Praveen Kumar</title>
 
   <!-- Social Media & Open Graph Meta Tags -->
@@ -31,159 +31,237 @@
   <meta name="twitter:image" content="https://praveenkhumar.github.io/profile.jpg" />
 
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23111111'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='system-ui%2Csans-serif' font-size='22' font-weight='700' fill='%23ffffff'%3EPK%3C/text%3E%3C/svg%3E">
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
     /* ──────────────────────────────────────────
-       DESIGN TOKEN SYSTEM & VARIABLES (LIGHT MONOCHROME)
+       APPLE DESIGN SYSTEM TOKENS & SURFACES
     ────────────────────────────────────────── */
     :root {
-      --bg-main: #fcfcfc;
-      --bg-surface: #ffffff;
-      --bg-subtle: #f4f4f6;
-      --bg-nav: rgba(252, 252, 252, 0.8);
+      --bg-base: #fbfbfd;
+      --bg-elevated: #ffffff;
+      --bg-secondary: #f5f5f7;
+      --bg-nav: rgba(251, 251, 253, 0.82);
       
-      --text-main: #111111;
-      --text-muted: #55555c;
-      --text-inverse: #ffffff;
+      --label-primary: #1d1d1f;
+      --label-secondary: #6e6e73;
+      --label-tertiary: #86868b;
       
-      --border-color: #e4e4e7;
-      --border-hover: #111111;
+      --accent-blue: #0071e3;
+      --accent-blue-hover: #0077ed;
       
-      --accent: #111111;
-      --accent-muted: #ececec;
-      --accent-tag-bg: #f0f0f3;
-      --accent-tag-text: #3f3f46;
+      --separator: rgba(0, 0, 0, 0.08);
+      --card-border: rgba(0, 0, 0, 0.06);
+      --card-border-hover: rgba(0, 0, 0, 0.14);
       
-      --radius-sm: 6px;
-      --radius-md: 10px;
+      --font-apple: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --font-mono: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
       --radius-lg: 16px;
-      --radius-full: 9999px;
-      
-      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
+      --radius-xl: 24px;
+      --radius-pill: 980px;
       
       --max-width: 1040px;
-      --transition: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-apple: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* ──────────────────────────────────────────
-       RESET & GLOBAL BASE STYLES
-    ────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
-    body {
-      font-family: var(--font-sans);
-      background: var(--bg-main);
-      color: var(--text-main);
-      line-height: 1.6;
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-size: 16px;
     }
-    a { color: inherit; text-decoration: none; transition: var(--transition); }
 
-    /* Global SVG Icon Styling */
+    body {
+      font-family: var(--font-apple);
+      background-color: var(--bg-base);
+      color: var(--label-primary);
+      line-height: 1.47059;
+      font-size: 17px;
+      letter-spacing: -0.022em;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
     .icon-svg {
       width: 14px;
       height: 14px;
       fill: currentColor;
       display: inline-block;
       vertical-align: middle;
-      margin-right: 6px;
+      flex-shrink: 0;
     }
 
     /* ──────────────────────────────────────────
-       NAVIGATION BAR
+       APPLE TRANSLUCENT NAVIGATION
     ────────────────────────────────────────── */
-    .nav-container {
+    header.site-nav {
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
       background: var(--bg-nav);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-color);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--separator);
     }
-    .nav-content {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 24px;
-      height: 64px;
+    .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      height: 52px;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
     }
     .nav-brand {
-      font-weight: 700;
-      font-size: 1.2rem;
-      letter-spacing: -0.02em;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--label-primary);
     }
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 24px;
     }
     .nav-item {
-      padding: 6px 14px;
-      border-radius: var(--radius-sm);
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      color: var(--label-secondary);
+      transition: color 0.15s ease;
     }
     .nav-item:hover, .nav-item.active {
-      color: var(--text-main);
-      background: var(--bg-subtle);
+      color: var(--label-primary);
+    }
+    .nav-cta {
+      background: var(--label-primary);
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      transition: background 0.2s var(--ease-apple);
+    }
+    .nav-cta:hover {
+      background: #333336;
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
     }
 
     /* ──────────────────────────────────────────
-       HERO COMPONENT (COMPACT FOR ARCHIVE PAGE)
+       HERO COMPONENT (DIRECTORY HEADER)
     ────────────────────────────────────────── */
     .hero-section {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 40px 24px 20px;
+      padding: 48px 0 24px;
     }
     .hero-text {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 12px;
+      gap: 8px;
     }
     .back-link {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent-blue);
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+      transition: gap 0.2s ease;
     }
     .back-link:hover {
-      color: var(--text-main);
+      gap: 8px;
+    }
+    .hero-eyebrow {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--accent-blue);
     }
     .hero-name {
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(32px, 4.5vw, 48px);
+      line-height: 1.08;
       font-weight: 700;
-      letter-spacing: -0.04em;
-      line-height: 1.1;
+      letter-spacing: -0.035em;
+      color: var(--label-primary);
     }
     .hero-tagline {
-      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-size: 17px;
+      line-height: 1.47;
       font-weight: 400;
-      color: var(--text-muted);
-      letter-spacing: -0.02em;
-      line-height: 1.4;
+      letter-spacing: -0.018em;
+      color: var(--label-secondary);
+      max-width: 680px;
     }
 
     /* ──────────────────────────────────────────
-       SEARCH & FILTER BAR
+       STATS ROW
+    ────────────────────────────────────────── */
+    .stats-section {
+      padding: 16px 0 24px;
+    }
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    @media (max-width: 640px) {
+      .stats-row { grid-template-columns: 1fr; gap: 12px; }
+    }
+    .stat-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+      transition: transform 0.25s var(--ease-apple), border-color 0.2s ease;
+    }
+    .stat-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--card-border-hover);
+    }
+    .stat-num {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--label-primary);
+      line-height: 1.1;
+    }
+    .stat-desc {
+      font-size: 13px;
+      color: var(--label-secondary);
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    /* ──────────────────────────────────────────
+       APPLE SYSTEM SEARCH & FILTER SYSTEM
     ────────────────────────────────────────── */
     .filter-section {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 16px 24px;
+      padding: 12px 0 32px;
       display: flex;
       flex-direction: column;
       gap: 16px;
@@ -194,26 +272,32 @@
     }
     .search-input {
       width: 100%;
-      padding: 12px 16px 12px 40px;
-      font-family: var(--font-sans);
-      font-size: 0.95rem;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-color);
+      height: 44px;
+      padding: 0 16px 0 42px;
+      font-family: var(--font-apple);
+      font-size: 15px;
+      letter-spacing: -0.015em;
+      background: rgba(0, 0, 0, 0.04);
+      border: 1px solid transparent;
       border-radius: var(--radius-md);
-      color: var(--text-main);
-      transition: var(--transition);
+      color: var(--label-primary);
+      transition: all 0.2s var(--ease-apple);
       outline: none;
     }
     .search-input:focus {
-      border-color: var(--border-hover);
+      background: var(--bg-elevated);
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.2);
     }
     .search-icon {
       position: absolute;
       left: 14px;
       top: 50%;
       transform: translateY(-50%);
-      color: var(--text-muted);
+      color: var(--label-tertiary);
       pointer-events: none;
+      width: 16px;
+      height: 16px;
     }
     .filter-chips {
       display: flex;
@@ -222,72 +306,48 @@
     }
     .filter-btn {
       padding: 6px 14px;
-      border-radius: var(--radius-full);
-      font-size: 0.85rem;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-apple);
+      font-size: 13px;
       font-weight: 500;
+      letter-spacing: -0.01em;
       cursor: pointer;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-color);
-      color: var(--text-muted);
-      transition: var(--transition);
+      background: var(--bg-secondary);
+      border: 1px solid var(--card-border);
+      color: var(--label-secondary);
+      transition: all 0.2s var(--ease-apple);
     }
-    .filter-btn:hover, .filter-btn.active {
-      background: var(--accent);
-      color: var(--text-inverse);
-      border-color: var(--accent);
+    .filter-btn:hover {
+      background: rgba(0, 0, 0, 0.08);
+      color: var(--label-primary);
     }
-
-    /* ──────────────────────────────────────────
-       STATS ROW
-    ────────────────────────────────────────── */
-    .stats-section {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 16px 24px;
-    }
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-    .stat-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 20px;
-      text-align: center;
-    }
-    .stat-num {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--text-main);
-      font-family: var(--font-mono);
-    }
-    .stat-desc {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-top: 4px;
+    .filter-btn.active {
+      background: var(--label-primary);
+      color: #ffffff;
+      border-color: var(--label-primary);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     }
 
     /* ──────────────────────────────────────────
-       MAIN PAGE GRID
+       CERTIFICATIONS DIRECTORY GRIDS
     ────────────────────────────────────────── */
     .main-content {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 24px 48px;
+      padding-bottom: 72px;
     }
     .category-group {
-      margin-bottom: 40px;
+      margin-bottom: 48px;
     }
     .category-title {
-      font-size: 1.25rem;
+      font-size: 21px;
       font-weight: 700;
-      margin-bottom: 16px;
+      letter-spacing: -0.025em;
+      color: var(--label-primary);
+      margin-bottom: 18px;
       display: flex;
       align-items: center;
-      gap: 8px;
-      letter-spacing: -0.02em;
+      gap: 10px;
+      border-bottom: 1px solid var(--separator);
+      padding-bottom: 10px;
     }
     .certs-grid {
       display: grid;
@@ -295,173 +355,180 @@
       gap: 16px;
     }
     .cert-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 24px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 22px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      transition: var(--transition);
+      justify-content: space-between;
+      gap: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+      transition: transform 0.25s var(--ease-apple), box-shadow 0.25s var(--ease-apple), border-color 0.2s ease;
     }
     .cert-card:hover { 
-      border-color: var(--border-hover); 
+      transform: translateY(-2px);
+      border-color: var(--card-border-hover);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.04);
     }
     .cert-platform {
       display: inline-flex;
       align-items: center;
-      font-size: 0.72rem;
-      font-weight: 700;
+      font-size: 11px;
+      font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      color: var(--label-tertiary);
     }
     .cert-title { 
-      font-size: 1rem; 
-      font-weight: 700; 
+      font-size: 15px; 
+      font-weight: 600; 
+      letter-spacing: -0.015em;
       line-height: 1.4; 
       flex-grow: 1; 
+      color: var(--label-primary);
+    }
+    .cert-title a {
+      transition: color 0.15s ease;
     }
     .cert-title a:hover {
-      text-decoration: underline;
+      color: var(--accent-blue);
     }
     .cert-meta-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-top: 6px;
-      font-size: 0.8rem;
+      font-size: 12px;
     }
     .cert-date { 
       font-family: var(--font-mono); 
-      color: var(--text-muted); 
+      color: var(--label-tertiary); 
+      font-size: 12px;
     }
     .cert-badge {
       font-weight: 500;
-      padding: 4px 10px;
-      background: var(--bg-subtle);
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--border-color);
-      font-size: 0.75rem;
+      padding: 3px 8px;
+      background: var(--bg-secondary);
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--card-border);
+      font-size: 11px;
+      color: var(--label-secondary);
     }
 
     /* ──────────────────────────────────────────
-       FOOTER & UTILITIES
+       FOOTER & FAB UTILITY
     ────────────────────────────────────────── */
     footer {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 32px 24px;
-      border-top: 1px solid var(--border-color);
+      border-top: 1px solid var(--separator);
       text-align: center;
-      font-size: 0.85rem;
-      color: var(--text-muted);
+      padding: 40px 24px 60px;
+      font-size: 12px;
+      color: var(--label-tertiary);
+      background: var(--bg-secondary);
     }
     
     .fab-top {
       position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 46px;
-      height: 46px;
-      border-radius: var(--radius-md);
-      background: var(--accent);
-      color: var(--text-inverse);
-      border: none;
+      bottom: 28px;
+      right: 28px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--bg-elevated);
+      color: var(--label-primary);
+      border: 1px solid var(--card-border);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
       opacity: 0;
       pointer-events: none;
       transform: translateY(8px);
-      transition: var(--transition);
+      transition: opacity 0.25s var(--ease-apple), transform 0.25s var(--ease-apple);
       z-index: 90;
     }
     .fab-top svg {
-      width: 20px;
-      height: 20px;
-      display: block;
-      fill: #ffffff;
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
     }
-    .fab-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
-
-    /* ──────────────────────────────────────────
-       MEDIA QUERIES (RESPONSIVENESS)
-    ────────────────────────────────────────── */
-    @media (max-width: 640px) {
-      .nav-item:not(.nav-always) { display: none; }
-      .hero-section { padding-top: 32px; }
-      .filter-section { gap: 12px; }
-      .stats-row { grid-template-columns: 1fr; gap: 12px; }
+    .fab-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
     }
   </style>
 </head>
 <body>
 
-  <!-- NAVIGATION BAR -->
-  <nav class="nav-container" id="navBar">
-    <div class="nav-content">
-      <span class="nav-brand">PK</span>
-      <div class="nav-links">
-        <a href="./index.html" class="nav-item nav-always">Home</a>
+  <!-- APPLE TRANSLUCENT NAVIGATION BAR -->
+  <header class="site-nav" id="navBar">
+    <div class="nav-inner">
+      <span class="nav-brand">Praveen Kumar</span>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="./index.html" class="nav-item">Home</a>
         <a href="./index.html#projects" class="nav-item">Projects</a>
         <a href="#" class="nav-item active">Certs</a>
         <a href="./index.html#contact" class="nav-item">Contact</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- COMPACT HERO AREA -->
-  <header class="hero-section">
-    <div class="hero-text">
-      <a href="./index.html" class="back-link">
-        <svg class="icon-svg" viewBox="0 0 24 24" style="margin-right: 2px;"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
-        Back to Portfolio
-      </a>
-      <h1 class="hero-name">Certifications Directory</h1>
-      <p class="hero-tagline">My continuous learning journey across Cloud, Architecture, Machine Learning, and Backend engineering.</p>
+      </nav>
+      <a class="nav-cta" href="./index.html#projects">Portfolio</a>
     </div>
   </header>
 
-  <!-- STATS -->
+  <!-- HERO HEADER AREA -->
+  <header class="hero-section">
+    <div class="wrap hero-text">
+      <a href="./index.html" class="back-link">
+        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+        Back to Portfolio
+      </a>
+      <span class="hero-eyebrow">Continuous Learning</span>
+      <h1 class="hero-name">Certifications Directory</h1>
+      <p class="hero-tagline">My continuous learning journey across Cloud Architecture, Generative AI, Machine Learning, and Backend Engineering.</p>
+    </div>
+  </header>
+
+  <!-- KEY STATS ROW -->
   <section class="stats-section">
-    <div class="stats-row">
+    <div class="wrap stats-row">
       <div class="stat-card">
         <div class="stat-num">27</div>
         <div class="stat-desc">Total Certifications</div>
       </div>
       <div class="stat-card">
         <div class="stat-num">6</div>
-        <div class="stat-desc">Core Categories</div>
+        <div class="stat-desc">Core Technical Domains</div>
       </div>
       <div class="stat-card">
         <div class="stat-num">2026</div>
-        <div class="stat-desc">Most Recent Earned</div>
+        <div class="stat-desc">Latest Verified Credential</div>
       </div>
     </div>
   </section>
 
-  <!-- SEARCH & FILTER SYSTEM -->
+  <!-- APPLE SYSTEM SEARCH & FILTER SYSTEM -->
   <section class="filter-section">
-    <div class="search-wrapper">
-      <svg class="icon-svg search-icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-      <input type="text" id="searchInput" class="search-input" placeholder="Search certifications, platforms, or skills...">
-    </div>
-    <div class="filter-chips">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="python-dev">Python Development</button>
-      <button class="filter-btn" data-filter="ai-ml">Machine Learning &amp; AI</button>
-      <button class="filter-btn" data-filter="gen-ai">GenAI &amp; Prompt Engineering</button>
-      <button class="filter-btn" data-filter="devops-cloud">DevOps &amp; Cloud</button>
-      <button class="filter-btn" data-filter="web-frameworks">Web Dev &amp; Frameworks</button>
-      <button class="filter-btn" data-filter="management">Project Management</button>
+    <div class="wrap">
+      <div class="search-wrapper">
+        <svg class="search-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input type="text" id="searchInput" class="search-input" placeholder="Search certifications, platforms, or skills...">
+      </div>
+      <div class="filter-chips" style="margin-top: 14px;">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="python-dev">Python Development</button>
+        <button class="filter-btn" data-filter="ai-ml">Machine Learning &amp; AI</button>
+        <button class="filter-btn" data-filter="gen-ai">GenAI &amp; Prompt Engineering</button>
+        <button class="filter-btn" data-filter="devops-cloud">DevOps &amp; Cloud</button>
+        <button class="filter-btn" data-filter="web-frameworks">Web Dev &amp; Frameworks</button>
+        <button class="filter-btn" data-filter="management">Project Management</button>
+      </div>
     </div>
   </section>
 
   <!-- ALL CERTIFICATIONS CONTAINER -->
-  <main class="main-content">
+  <main class="wrap main-content">
 
     <!-- Python Development Category -->
     <div class="category-group" data-group-category="python-dev">
@@ -777,22 +844,23 @@
 
   </main>
 
-  <!-- BACK TO TOP BUTTON -->
-  <button class="fab-top" id="fabTop" aria-label="Go to top" title="Go to top">
-    <svg viewBox="0 0 24 24" width="20" height="20" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+  <!-- BACK TO TOP FAB BUTTON -->
+  <button class="fab-top" id="fabTop" aria-label="Scroll to top" title="Scroll to top">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/>
     </svg>
   </button>
 
   <footer>
-    © 2026 Praveen Kumar · Chennai, India · Designed for Performance
+    <div class="wrap">
+      © 2026 Praveen Kumar · Chennai, India · Verified Knowledge &amp; Continuous Learning
+    </div>
   </footer>
 
   <script>
     // Search and Filter Functionality
     const searchInput = document.getElementById('searchInput');
     const filterButtons = document.querySelectorAll('.filter-btn');
-    const certCards = document.querySelectorAll('.cert-card');
     const categoryGroups = document.querySelectorAll('.category-group');
 
     function filterCertifications() {
